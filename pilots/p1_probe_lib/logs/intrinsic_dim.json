@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "library": "logs/probe_library_qwen3_1.7b_L14_k96.json",
+    "sigma_calibration": "logs/sigma_calibration_qwen3_1.7b_L14.json",
+    "tau_pool": 1.509
+  },
+  "coverage": {
+    "n_probes": 96,
+    "k": 32,
+    "total_memberships": 3072,
+    "union_size": 1472,
+    "compression_ratio": 0.4791666666666667,
+    "membership_mean": 2.0869565217391304,
+    "membership_median": 1,
+    "membership_max": 66,
+    "features_in_1_probe": 1093,
+    "features_in_ge2_probes": 379
+  },
+  "pairwise_overlap": {
+    "pairwise_overlap_mean": 3.5212719298245614,
+    "pairwise_overlap_max": 26,
+    "pairs_zero_overlap": 1064,
+    "pairs_total": 4560
+  },
+  "penalty_floor": {
+    "mu_over_sigma_min": 0.0,
+    "mu_over_sigma_p05": 0.0,
+    "mu_over_sigma_median": 22.775320858748593,
+    "mu_over_sigma_mean": 57.37843276878791,
+    "mu_over_sigma_max": 2350.2805482328768
+  },
+  "feasibility_bound": {
+    "greedy_picked": 32,
+    "probe_coverage_mean": 3.84375,
+    "probe_coverage_max": 12,
+    "probe_coverage_min": 0,
+    "per_probe_z_lb_min": 11.250801810294641,
+    "per_probe_z_lb_median": 34.11999711587988,
+    "per_probe_z_lb_max": 112.99504330688947,
+    "joint_z_lb_greedy": 37.10879752932431,
+    "joint_z_lb_margin_over_tau": 24.591648462110214
+  }
+}

@@ -1,0 +1,19 @@
+P3b: distribution-matched adversarial distillation
+================================================================================
+       N    val_mse   eval_mse   jacc_med   pear_med   maha_med    detect?
+--------------------------------------------------------------------------------
+     100     0.1017     0.1800      0.208      0.587    2015.17        YES
+     500     0.0504     0.1153      0.391      0.752    1567.45        YES
+    2000     0.0279     0.0885      0.488      0.845    1312.99        YES
+    5000     0.0218     0.0872      0.455      0.851    1059.25        YES
+
+Per-category @ N=5000:
+     refusal: n=1  jacc_med=0.455  maha_med=1468.5
+   induction: n=5  jacc_med=0.032  maha_med=4726.6
+         ioi: n=5  jacc_med=0.231  maha_med=1687.6
+      syntax: n=3  jacc_med=0.882  maha_med=44.0
+       coref: n=3  jacc_med=0.208  maha_med=3170.8
+     control: n=1  jacc_med=0.524  maha_med=166.6
+  arithmetic: n=5  jacc_med=0.524  maha_med=1059.3
+     factual: n=5  jacc_med=0.600  maha_med=649.8
+        lang: n=3  jacc_med=0.684  maha_med=542.8

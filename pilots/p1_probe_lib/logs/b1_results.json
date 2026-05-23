@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "target": "Qwen/Qwen3-1.7B",
+    "substitute": "Qwen/Qwen3-0.6B",
+    "layer": 14,
+    "n_prompts": 200,
+    "output_len": 96,
+    "top_k": 32
+  },
+  "cost_seconds": {
+    "normal_M_service": 849.4497299194336,
+    "cheap_lie_Mp_service": 815.1414906978607,
+    "wasteful_Mp_service_plus_M_commit": 824.2446937561035,
+    "cheap_pct_of_normal": 95.96112188712723,
+    "wasteful_pct_of_normal": 97.03278071961708
+  },
+  "detection": {
+    "threshold_at_1pct_FPR": 0.5217494302485302,
+    "TPR_cheap_lie": 1.0,
+    "TPR_wasteful_lie": 0.05
+  },
+  "gates": {
+    "pass_statistical_cheap_TPR_ge_0.95": true,
+    "pass_economic_wasteful_cost_ge_0.90_normal": true,
+    "pass_overall": true
+  }
+}

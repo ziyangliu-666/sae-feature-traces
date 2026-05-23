@@ -1,0 +1,16 @@
+B1: Commit-Open Binding Experiment
+==============================================================================
+
+Economic cost (C6):
+  normal    (M service):                  849.4s  [100.0%]
+  cheap lie (M' service, M' commit):      815.1s  [ 96.0%]  (incentive if undetected)
+  wasteful  (M' service, M commit):       824.2s  [ 97.0%]  (attacker's only safe strategy)
+
+Detection (threshold @ 1% FPR on honest):
+  TPR cheap-lie    (M'-trace committed): 100.0%
+  TPR wasteful-lie (M-trace committed):    5.0%   (high TPR here means even legit M-activations on M' outputs diverge → bonus detection)
+
+Gate outcomes:
+  [1] cheap-lie detected    (TPR ≥ 0.95):               PASS
+  [2] wasteful cost ≥ normal (ratio ≥ 0.90):            PASS
+  → Overall:                                            PASS — proceed to re-review + E1-E13

@@ -1,0 +1,216 @@
+{
+  "e5_joint_consistency_k_sweep": {
+    "1": {
+      "Qwen/Qwen2.5-1.5B": 1.0,
+      "microsoft/Phi-3.5-mini-instruct": 1.0,
+      "allenai/OLMo-2-1124-7B": 1.0,
+      "Qwen/Qwen3-0.6B": 1.0
+    },
+    "2": {
+      "Qwen/Qwen2.5-1.5B": 1.0,
+      "microsoft/Phi-3.5-mini-instruct": 1.0,
+      "allenai/OLMo-2-1124-7B": 1.0,
+      "Qwen/Qwen3-0.6B": 1.0
+    },
+    "4": {
+      "Qwen/Qwen2.5-1.5B": 1.0,
+      "microsoft/Phi-3.5-mini-instruct": 1.0,
+      "allenai/OLMo-2-1124-7B": 1.0,
+      "Qwen/Qwen3-0.6B": 1.0
+    },
+    "8": {
+      "Qwen/Qwen2.5-1.5B": 1.0,
+      "microsoft/Phi-3.5-mini-instruct": 1.0,
+      "allenai/OLMo-2-1124-7B": 1.0,
+      "Qwen/Qwen3-0.6B": 1.0
+    },
+    "16": {
+      "Qwen/Qwen2.5-1.5B": 1.0,
+      "microsoft/Phi-3.5-mini-instruct": 1.0,
+      "allenai/OLMo-2-1124-7B": 1.0,
+      "Qwen/Qwen3-0.6B": 1.0
+    },
+    "32": {
+      "Qwen/Qwen2.5-1.5B": 1.0,
+      "microsoft/Phi-3.5-mini-instruct": 1.0,
+      "allenai/OLMo-2-1124-7B": 1.0,
+      "Qwen/Qwen3-0.6B": 1.0
+    }
+  },
+  "e5_kill_gate": {
+    "auc_k32_mean": 1.0,
+    "auc_k1_mean": 1.0,
+    "delta": 0.0,
+    "threshold": 0.03,
+    "status": "KILL"
+  },
+  "e6_per_category": {
+    "arithmetic": {
+      "n_entries": 48,
+      "median_maha": 70.54963635215884,
+      "min_maha": 41.247765430266185,
+      "max_maha": 148.47763929481783,
+      "status": "ROBUST"
+    },
+    "control": {
+      "n_entries": 16,
+      "median_maha": 50.58048011024947,
+      "min_maha": 29.54128767934703,
+      "max_maha": 114.79111718405227,
+      "status": "ROBUST"
+    },
+    "coref": {
+      "n_entries": 40,
+      "median_maha": 59.37762924380298,
+      "min_maha": 31.203066953790103,
+      "max_maha": 262.8421212488248,
+      "status": "ROBUST"
+    },
+    "entailment": {
+      "n_entries": 24,
+      "median_maha": 55.30711822513551,
+      "min_maha": 41.354174404931186,
+      "max_maha": 297.5600275492965,
+      "status": "ROBUST"
+    },
+    "factual": {
+      "n_entries": 56,
+      "median_maha": 65.5657007913829,
+      "min_maha": 29.555434778083455,
+      "max_maha": 336.2488086140197,
+      "status": "ROBUST"
+    },
+    "induction": {
+      "n_entries": 56,
+      "median_maha": 34.03527698532331,
+      "min_maha": 14.72494441330402,
+      "max_maha": 93.12262269218014,
+      "status": "ROBUST"
+    },
+    "ioi": {
+      "n_entries": 56,
+      "median_maha": 38.21565333618999,
+      "min_maha": 16.103827234619562,
+      "max_maha": 229.92460668461555,
+      "status": "ROBUST"
+    },
+    "lang": {
+      "n_entries": 24,
+      "median_maha": 62.97329920530989,
+      "min_maha": 23.67150157457542,
+      "max_maha": 156.59646213529112,
+      "status": "ROBUST"
+    },
+    "negation": {
+      "n_entries": 24,
+      "median_maha": 48.36676311185148,
+      "min_maha": 27.99186767207363,
+      "max_maha": 114.98238378520075,
+      "status": "ROBUST"
+    },
+    "refusal": {
+      "n_entries": 16,
+      "median_maha": 62.67678359521089,
+      "min_maha": 38.92379761865896,
+      "max_maha": 513.7858189891339,
+      "status": "ROBUST"
+    },
+    "syntax": {
+      "n_entries": 24,
+      "median_maha": 48.003443222442655,
+      "min_maha": 32.330369942396636,
+      "max_maha": 111.96272899866297,
+      "status": "ROBUST"
+    }
+  },
+  "e6_ranked_by_robustness": [
+    {
+      "category": "arithmetic",
+      "n_entries": 48,
+      "median_maha": 70.54963635215884,
+      "min_maha": 41.247765430266185,
+      "max_maha": 148.47763929481783,
+      "status": "ROBUST"
+    },
+    {
+      "category": "factual",
+      "n_entries": 56,
+      "median_maha": 65.5657007913829,
+      "min_maha": 29.555434778083455,
+      "max_maha": 336.2488086140197,
+      "status": "ROBUST"
+    },
+    {
+      "category": "lang",
+      "n_entries": 24,
+      "median_maha": 62.97329920530989,
+      "min_maha": 23.67150157457542,
+      "max_maha": 156.59646213529112,
+      "status": "ROBUST"
+    },
+    {
+      "category": "refusal",
+      "n_entries": 16,
+      "median_maha": 62.67678359521089,
+      "min_maha": 38.92379761865896,
+      "max_maha": 513.7858189891339,
+      "status": "ROBUST"
+    },
+    {
+      "category": "coref",
+      "n_entries": 40,
+      "median_maha": 59.37762924380298,
+      "min_maha": 31.203066953790103,
+      "max_maha": 262.8421212488248,
+      "status": "ROBUST"
+    },
+    {
+      "category": "entailment",
+      "n_entries": 24,
+      "median_maha": 55.30711822513551,
+      "min_maha": 41.354174404931186,
+      "max_maha": 297.5600275492965,
+      "status": "ROBUST"
+    },
+    {
+      "category": "control",
+      "n_entries": 16,
+      "median_maha": 50.58048011024947,
+      "min_maha": 29.54128767934703,
+      "max_maha": 114.79111718405227,
+      "status": "ROBUST"
+    },
+    {
+      "category": "negation",
+      "n_entries": 24,
+      "median_maha": 48.36676311185148,
+      "min_maha": 27.99186767207363,
+      "max_maha": 114.98238378520075,
+      "status": "ROBUST"
+    },
+    {
+      "category": "syntax",
+      "n_entries": 24,
+      "median_maha": 48.003443222442655,
+      "min_maha": 32.330369942396636,
+      "max_maha": 111.96272899866297,
+      "status": "ROBUST"
+    },
+    {
+      "category": "ioi",
+      "n_entries": 56,
+      "median_maha": 38.21565333618999,
+      "min_maha": 16.103827234619562,
+      "max_maha": 229.92460668461555,
+      "status": "ROBUST"
+    },
+    {
+      "category": "induction",
+      "n_entries": 56,
+      "median_maha": 34.03527698532331,
+      "min_maha": 14.72494441330402,
+      "max_maha": 93.12262269218014,
+      "status": "ROBUST"
+    }
+  ]
+}

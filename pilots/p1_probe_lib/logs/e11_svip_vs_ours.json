@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "backbone": "qwen3-1.7b-L14",
+    "note": "SVIP=parallel-serve side-channel. Ours=commit-open over Merkle trace.",
+    "honest_joint_median": 0.7977806949626636,
+    "tau_honest_joint_99th_pct": 0.8205523454348703
+  },
+  "attackers": [
+    {
+      "name": "B. cheap (Qwen3-0.6B, LEARNED_LIN lift)",
+      "short": "cheap",
+      "source": "E2 LEARNED_LIN (per-probe maha mean)",
+      "svip_joint_z": 0.7977806949626636,
+      "ours_joint_z": 56.681119577089945,
+      "metric": "per-probe mean",
+      "ours_over_tau": 69.0767869867589,
+      "svip_over_tau": 0.9722483878098741,
+      "svip_detected_at_fpr1pct": false,
+      "ours_detected_at_fpr1pct": true
+    },
+    {
+      "name": "C. cross-family (Qwen2.5-1.5B, linear fit)",
+      "short": "cross-family (Qwen2.5-1.5B)",
+      "source": "E3 linear fit on 96 probes",
+      "svip_joint_z": 0.7977806949626636,
+      "ours_joint_z": 55.95001005555235,
+      "metric": "joint-z",
+      "ours_over_tau": 68.18579017759113,
+      "svip_over_tau": 0.9722483878098741,
+      "svip_detected_at_fpr1pct": false,
+      "ours_detected_at_fpr1pct": true
+    },
+    {
+      "name": "C. cross-family (Phi-3.5-mini)",
+      "short": "cross-family (Phi-3.5)",
+      "source": "E3 linear fit on 96 probes",
+      "svip_joint_z": 0.7977806949626636,
+      "ours_joint_z": 56.38136736072651,
+      "metric": "joint-z",
+      "ours_over_tau": 68.71148157019273,
+      "svip_over_tau": 0.9722483878098741,
+      "svip_detected_at_fpr1pct": false,
+      "ours_detected_at_fpr1pct": true
+    },
+    {
+      "name": "D. adaptive LoRA r64 joint-phi (stageA pure-probe)",
+      "short": "adaptive LoRA r64",
+      "source": "E4 v2 stageA joint_z",
+      "svip_joint_z": 0.7977806949626636,
+      "ours_joint_z": 4.192544754159829,
+      "metric": "joint-z",
+      "ours_over_tau": 5.1094177933741625,
+      "svip_over_tau": 0.9722483878098741,
+      "svip_detected_at_fpr1pct": false,
+      "ours_detected_at_fpr1pct": true
+    }
+  ],
+  "summary": {
+    "svip_miss_rate": 1.0,
+    "ours_detect_rate": 1.0
+  }
+}

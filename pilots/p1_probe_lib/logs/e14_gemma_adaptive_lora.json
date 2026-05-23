@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "target": "google/gemma-2-2b",
+    "substitute": "google/gemma-2-2b-it",
+    "sae_release": "gemma-scope-2b-pt-res-canonical",
+    "sae_id": "layer_12/width_16k/canonical",
+    "layer": 12,
+    "d_model": 2304,
+    "lora_rank": 64,
+    "lora_target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "n_probes": 96,
+    "top_k": 32,
+    "n_train_steps": 1500,
+    "honest_tau_99_synthetic": 0.8205523454348699,
+    "sub_baseline_pile_ppx_no_lora": 18.435417160350127,
+    "wall_s": 327.1350586414337,
+    "gpu": "L4"
+  },
+  "results": {
+    "baseline_phi_only": {
+      "joint_z": 205.56318214072152,
+      "per_cat_mean_z": {
+        "ioi": 432.7982276899806,
+        "induction": 313.4625569841865,
+        "coref": 349.91385374806384,
+        "factual": 3.3499791963006027,
+        "arithmetic": 83.53561045388064,
+        "lang": 121.47300753008041,
+        "syntax": 53.60200661441312,
+        "negation": 120.77179250501119,
+        "entailment": 328.0203830414693,
+        "refusal": 70.24922978669619,
+        "control": 178.437217775721
+      },
+      "per_probe_z_median": 269.1298411650944,
+      "per_probe_z_max": 691.5264894114439,
+      "per_probe_z_min": 0.6964427064588619,
+      "pile_perplexity": 18.435417160350127,
+      "phi_heldout_r2_init": 0.6585633754730225
+    },
+    "stageA_pure_probe": {
+      "joint_z": 105.89469650526867,
+      "per_cat_mean_z": {
+        "ioi": 219.07803158078204,
+        "induction": 121.26917129177207,
+        "coref": 120.7010520069239,
+        "factual": 5.448272389776782,
+        "arithmetic": 50.9830780077779,
+        "lang": 82.86921978585825,
+        "syntax": 77.5109780603015,
+        "negation": 138.63205074392326,
+        "entailment": 89.9328950926293,
+        "refusal": 94.10071324086037,
+        "control": 198.96825990271796
+      },
+      "per_probe_z_median": 69.96509763335534,
+      "per_probe_z_max": 494.00284460939616,
+      "per_probe_z_min": 0.6762517674864053,
+      "pile_perplexity": 8031.64512110824,
+      "lambda_probe": 1.0,
+      "lambda_util": 0.0
+    }
+  }
+}

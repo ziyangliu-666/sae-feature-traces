@@ -1,0 +1,40 @@
+{
+  "tau_honest_joint_99th_pct": 0.8205523454348699,
+  "honest_joint_median": 0.7977806949626634,
+  "per_attacker": [
+    {
+      "attacker": "google/gemma-2-2b-it",
+      "r2_train": 0.9999895513383308,
+      "r2_heldout": 0.4555717706680298,
+      "joint_maha": 178.8392984843646,
+      "ratio_tau": 217.9498961636442,
+      "detected_at_fpr1pct": true
+    },
+    {
+      "attacker": "EleutherAI/pythia-1.4b",
+      "r2_train": 0.953588992357254,
+      "r2_heldout": -1.2923412322998047,
+      "joint_maha": 260.0270678635831,
+      "ratio_tau": 316.89272391973486,
+      "detected_at_fpr1pct": true
+    },
+    {
+      "attacker": "Qwen/Qwen2.5-1.5B",
+      "r2_train": 0.97844547778368,
+      "r2_heldout": -15.403148651123047,
+      "joint_maha": 337.7036186717481,
+      "ratio_tau": 411.5564601704655,
+      "detected_at_fpr1pct": true
+    },
+    {
+      "attacker": "microsoft/Phi-3.5-mini-instruct",
+      "r2_train": 0.9633042626082897,
+      "r2_heldout": -0.39240562915802,
+      "joint_maha": 269.4162656047978,
+      "ratio_tau": 328.33525746857094,
+      "detected_at_fpr1pct": true
+    }
+  ],
+  "n_detected": 4,
+  "n_total": 4
+}

@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "experiment": "E16: white-box joint-z LoRA attack (E-E)",
+    "backbone": "gemma",
+    "target": "google/gemma-2-2b",
+    "substitute": "google/gemma-2-2b-it",
+    "lora_rank": 64,
+    "n_steps": 3000,
+    "lambda_utils": [
+      0.0,
+      0.1
+    ],
+    "alpha_jzs": [
+      1.0
+    ],
+    "tau_real": 1.09,
+    "base_ppx_no_lora_no_phi": 18.504393458372764,
+    "gpu": "A10G",
+    "wall_s": 1575.8382875919342
+  },
+  "results": {
+    "alpha_jz_1.0_lambda_util_0.0": {
+      "joint_z": 133.85493294636572,
+      "per_probe_max": 534.6643809672145,
+      "per_probe_median": 152.24483268156243,
+      "per_cat_mean_z": {
+        "ioi": 270.35062998683014,
+        "induction": 192.74657763758486,
+        "coref": 199.90694099052777,
+        "factual": 2.1910106645275254,
+        "arithmetic": 61.55988936441358,
+        "lang": 97.61352981341638,
+        "syntax": 1.3077149672384591,
+        "negation": 76.63823008404498,
+        "entailment": 284.7563173251663,
+        "refusal": 74.11137044334177,
+        "control": 134.97754740377783
+      },
+      "pile_perplexity": 12355.57189456976,
+      "lambda_util": 0.0,
+      "alpha_jointz": 1.0,
+      "lora_rank": 64,
+      "n_steps": 3000,
+      "phi_heldout_r2": 0.6586231887340546,
+      "pre_train_joint_z": 214.84366965279887,
+      "train_loss_last100_mse": 9.740509705543518,
+      "train_loss_last100_jz": 126.75459827423096,
+      "train_loss_last100_util": 0.0
+    },
+    "alpha_jz_1.0_lambda_util_0.1": {
+      "joint_z": 144.4041923856407,
+      "per_probe_max": 607.9824972102006,
+      "per_probe_median": 141.97510160893034,
+      "per_cat_mean_z": {
+        "ioi": 296.9322414537064,
+        "induction": 222.2296823871105,
+        "coref": 229.18821196654298,
+        "factual": 3.0620526975294657,
+        "arithmetic": 43.02640790416003,
+        "lang": 148.17175821846152,
+        "syntax": 1.2327779400268173,
+        "negation": 67.9054053146795,
+        "entailment": 287.50819658778335,
+        "refusal": 54.18478076382249,
+        "control": 124.4549578870779
+      },
+      "pile_perplexity": 1131.8707106316758,
+      "lambda_util": 0.1,
+      "alpha_jointz": 1.0,
+      "lora_rank": 64,
+      "n_steps": 3000,
+      "phi_heldout_r2": 0.6586556136608124,
+      "pre_train_joint_z": 214.90599951112503,
+      "train_loss_last100_mse": 10.163958196640015,
+      "train_loss_last100_jz": 148.4637001466751,
+      "train_loss_last100_util": 0.9619858720898629
+    }
+  }
+}

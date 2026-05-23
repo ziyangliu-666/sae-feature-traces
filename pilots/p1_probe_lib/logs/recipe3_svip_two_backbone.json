@@ -1,0 +1,155 @@
+{
+  "metadata": {
+    "note": "Two-backbone SVIP parallel-serve vs commit-open",
+    "qwen_tau_synthetic_p99": 0.8205523454348703,
+    "gemma_tau_synthetic_p99": 0.8205523454348699,
+    "qwen_honest_median": 0.7977806949626636,
+    "gemma_honest_median": 0.7977806949626634,
+    "n_qwen_attackers": 4,
+    "n_gemma_attackers": 7,
+    "n_total": 11
+  },
+  "qwen_attackers": [
+    {
+      "backbone": "qwen3-1.7b-L14",
+      "name": "B. cheap (Qwen3-0.6B, LEARNED_LIN lift)",
+      "short": "Qwen cheap",
+      "ours_joint_z": 56.681119577089945,
+      "svip_joint_z": 0.7977806949626636,
+      "tau": 0.8205523454348703,
+      "svip_over_tau": 0.9722483878098741,
+      "ours_over_tau": 69.0767869867589,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "qwen3-1.7b-L14",
+      "name": "C. cross-family (Qwen2.5-1.5B linear fit)",
+      "short": "Qwen cross-fam 2.5-1.5B",
+      "ours_joint_z": 55.95001005555235,
+      "svip_joint_z": 0.7977806949626636,
+      "tau": 0.8205523454348703,
+      "svip_over_tau": 0.9722483878098741,
+      "ours_over_tau": 68.18579017759113,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "qwen3-1.7b-L14",
+      "name": "C. cross-family (Phi-3.5-mini linear fit)",
+      "short": "Qwen cross-fam Phi-3.5",
+      "ours_joint_z": 56.38136736072651,
+      "svip_joint_z": 0.7977806949626636,
+      "tau": 0.8205523454348703,
+      "svip_over_tau": 0.9722483878098741,
+      "ours_over_tau": 68.71148157019273,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "qwen3-1.7b-L14",
+      "name": "D. adaptive LoRA r64 joint-phi StageA",
+      "short": "Qwen adaptive r64 StageA",
+      "ours_joint_z": 4.192544754159829,
+      "svip_joint_z": 0.7977806949626636,
+      "tau": 0.8205523454348703,
+      "svip_over_tau": 0.9722483878098741,
+      "ours_over_tau": 5.1094177933741625,
+      "svip_detected": false,
+      "ours_detected": true
+    }
+  ],
+  "gemma_attackers": [
+    {
+      "backbone": "gemma2-2b-L12",
+      "name": "E2-same-family (Gemma-2-2B-it native)",
+      "short": "Gemma same-fam IT",
+      "ours_joint_z": 108.97361475272726,
+      "svip_joint_z": 0.7977806949626634,
+      "tau": 0.8205523454348699,
+      "svip_over_tau": 0.9722483878098743,
+      "ours_over_tau": 132.80519562097442,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "gemma2-2b-L12",
+      "name": "E2-cross-family (Pythia-1.4B, LEARNED_LIN)",
+      "short": "Gemma cross-fam Pythia",
+      "ours_joint_z": 264.70835844489443,
+      "svip_joint_z": 0.7977806949626634,
+      "tau": 0.8205523454348699,
+      "svip_over_tau": 0.9722483878098743,
+      "ours_over_tau": 322.5977719978442,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "gemma2-2b-L12",
+      "name": "C-style cross-family (Qwen/Qwen2.5-1.5B)",
+      "short": "Gemma cross-fam Qwen2.5",
+      "ours_joint_z": 337.7036186717481,
+      "svip_joint_z": 0.7977806949626634,
+      "tau": 0.8205523454348699,
+      "svip_over_tau": 0.9722483878098743,
+      "ours_over_tau": 411.5564601704655,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "gemma2-2b-L12",
+      "name": "C-style cross-family (EleutherAI/pythia-1.4b)",
+      "short": "Gemma cross-fam Pythia-1.4B-e13",
+      "ours_joint_z": 260.0270678635831,
+      "svip_joint_z": 0.7977806949626634,
+      "tau": 0.8205523454348699,
+      "svip_over_tau": 0.9722483878098743,
+      "ours_over_tau": 316.89272391973486,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "gemma2-2b-L12",
+      "name": "C-style cross-family (microsoft/Phi-3.5-mini-instruct)",
+      "short": "Gemma cross-fam Phi-3.5",
+      "ours_joint_z": 269.4162656047978,
+      "svip_joint_z": 0.7977806949626634,
+      "tau": 0.8205523454348699,
+      "svip_over_tau": 0.9722483878098743,
+      "ours_over_tau": 328.33525746857094,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "gemma2-2b-L12",
+      "name": "C-style cross-family (google/gemma-2-2b-it)",
+      "short": "Gemma same-fam IT (e13 linear)",
+      "ours_joint_z": 178.8392984843646,
+      "svip_joint_z": 0.7977806949626634,
+      "tau": 0.8205523454348699,
+      "svip_over_tau": 0.9722483878098743,
+      "ours_over_tau": 217.9498961636442,
+      "svip_detected": false,
+      "ours_detected": true
+    },
+    {
+      "backbone": "gemma2-2b-L12",
+      "name": "D. Gemma adaptive LoRA r=64 joint-phi StageA",
+      "short": "Gemma adaptive r64 StageA",
+      "ours_joint_z": 105.89469650526867,
+      "svip_joint_z": 0.7977806949626634,
+      "tau": 0.8205523454348699,
+      "svip_over_tau": 0.9722483878098743,
+      "ours_over_tau": 129.05294475655595,
+      "svip_detected": false,
+      "ours_detected": true
+    }
+  ],
+  "summary": {
+    "svip_miss_rate": 1.0,
+    "ours_detect_rate": 1.0,
+    "n_svip_missed": 11,
+    "n_ours_detected": 11,
+    "n_total": 11
+  }
+}

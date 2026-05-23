@@ -1,0 +1,1136 @@
+{
+  "metadata": {
+    "target": "Qwen/Qwen3-1.7B",
+    "substitute": "Qwen/Qwen3-0.6B",
+    "layer": 14,
+    "n_probes_heldout": 31,
+    "sweep_N": [
+      100,
+      500,
+      2000,
+      5000
+    ]
+  },
+  "results": {
+    "N=100": {
+      "per_probe": [
+        {
+          "probe_id": 0,
+          "category": "ioi",
+          "jaccard": 0.12280701754385964,
+          "pearson": 0.18306222314655748,
+          "mahalanobis": 2491.0126953125
+        },
+        {
+          "probe_id": 1,
+          "category": "ioi",
+          "jaccard": 0.10344827586206896,
+          "pearson": 0.26029900960304564,
+          "mahalanobis": 2913.285888671875
+        },
+        {
+          "probe_id": 2,
+          "category": "ioi",
+          "jaccard": 0.12280701754385964,
+          "pearson": 0.7371147702257471,
+          "mahalanobis": 1879.019287109375
+        },
+        {
+          "probe_id": 3,
+          "category": "ioi",
+          "jaccard": 0.20754716981132076,
+          "pearson": 0.7953812260891101,
+          "mahalanobis": 2307.843994140625
+        },
+        {
+          "probe_id": 4,
+          "category": "ioi",
+          "jaccard": 0.015873015873015872,
+          "pearson": 0.7529320323775156,
+          "mahalanobis": 5204.29833984375
+        },
+        {
+          "probe_id": 5,
+          "category": "induction",
+          "jaccard": 0.0,
+          "pearson": 0.0,
+          "mahalanobis": 4983.96337890625
+        },
+        {
+          "probe_id": 6,
+          "category": "induction",
+          "jaccard": 0.0,
+          "pearson": 0.0,
+          "mahalanobis": 4726.64013671875
+        },
+        {
+          "probe_id": 7,
+          "category": "induction",
+          "jaccard": 0.03225806451612903,
+          "pearson": 0.06546385113261446,
+          "mahalanobis": 5306.42626953125
+        },
+        {
+          "probe_id": 8,
+          "category": "induction",
+          "jaccard": 0.16363636363636364,
+          "pearson": 0.4292417932223972,
+          "mahalanobis": 3066.96923828125
+        },
+        {
+          "probe_id": 9,
+          "category": "induction",
+          "jaccard": 0.28,
+          "pearson": 0.3644872185666073,
+          "mahalanobis": 2567.051513671875
+        },
+        {
+          "probe_id": 10,
+          "category": "factual",
+          "jaccard": 0.7297297297297297,
+          "pearson": 0.8990233637477266,
+          "mahalanobis": 1871.112060546875
+        },
+        {
+          "probe_id": 11,
+          "category": "factual",
+          "jaccard": 0.16363636363636364,
+          "pearson": 0.6063909257508845,
+          "mahalanobis": 2143.728759765625
+        },
+        {
+          "probe_id": 12,
+          "category": "factual",
+          "jaccard": 0.5238095238095238,
+          "pearson": 0.9078405304584504,
+          "mahalanobis": 124.41828918457031
+        },
+        {
+          "probe_id": 13,
+          "category": "factual",
+          "jaccard": 0.6410256410256411,
+          "pearson": 0.8682543692873074,
+          "mahalanobis": 1337.886962890625
+        },
+        {
+          "probe_id": 14,
+          "category": "factual",
+          "jaccard": 0.04918032786885246,
+          "pearson": 0.5042235008373743,
+          "mahalanobis": 948.9710693359375
+        },
+        {
+          "probe_id": 15,
+          "category": "arithmetic",
+          "jaccard": 0.0847457627118644,
+          "pearson": 0.5399006819124186,
+          "mahalanobis": 2595.510986328125
+        },
+        {
+          "probe_id": 16,
+          "category": "arithmetic",
+          "jaccard": 0.14285714285714285,
+          "pearson": 0.4681083391920846,
+          "mahalanobis": 412.3490905761719
+        },
+        {
+          "probe_id": 17,
+          "category": "arithmetic",
+          "jaccard": 0.0847457627118644,
+          "pearson": 0.5459797121044606,
+          "mahalanobis": 2988.318603515625
+        },
+        {
+          "probe_id": 18,
+          "category": "arithmetic",
+          "jaccard": 0.28,
+          "pearson": 0.4858910923428757,
+          "mahalanobis": 2984.2666015625
+        },
+        {
+          "probe_id": 19,
+          "category": "arithmetic",
+          "jaccard": 0.3333333333333333,
+          "pearson": 0.7865435103760493,
+          "mahalanobis": 2015.1722412109375
+        },
+        {
+          "probe_id": 20,
+          "category": "coref",
+          "jaccard": 0.6,
+          "pearson": 0.7674108900285096,
+          "mahalanobis": 622.1180419921875
+        },
+        {
+          "probe_id": 21,
+          "category": "coref",
+          "jaccard": 0.04918032786885246,
+          "pearson": 0.13790433351198716,
+          "mahalanobis": 3136.801513671875
+        },
+        {
+          "probe_id": 22,
+          "category": "coref",
+          "jaccard": 0.391304347826087,
+          "pearson": 0.5867333891206948,
+          "mahalanobis": 3211.003662109375
+        },
+        {
+          "probe_id": 23,
+          "category": "lang",
+          "jaccard": 0.8285714285714286,
+          "pearson": 0.9557053455609419,
+          "mahalanobis": 411.5267333984375
+        },
+        {
+          "probe_id": 24,
+          "category": "lang",
+          "jaccard": 0.6842105263157895,
+          "pearson": 0.9362610793250529,
+          "mahalanobis": 684.0968017578125
+        },
+        {
+          "probe_id": 25,
+          "category": "lang",
+          "jaccard": 0.8823529411764706,
+          "pearson": 0.9986615051107093,
+          "mahalanobis": 89.30770874023438
+        },
+        {
+          "probe_id": 26,
+          "category": "syntax",
+          "jaccard": 0.28,
+          "pearson": 0.4023073669790089,
+          "mahalanobis": 571.50146484375
+        },
+        {
+          "probe_id": 27,
+          "category": "syntax",
+          "jaccard": 0.06666666666666667,
+          "pearson": 0.3683887419326565,
+          "mahalanobis": 668.7503662109375
+        },
+        {
+          "probe_id": 28,
+          "category": "syntax",
+          "jaccard": 0.8285714285714286,
+          "pearson": 0.9974834995803434,
+          "mahalanobis": 14.427083015441895
+        },
+        {
+          "probe_id": 29,
+          "category": "refusal",
+          "jaccard": 0.4883720930232558,
+          "pearson": 0.6849623101134417,
+          "mahalanobis": 1149.684326171875
+        },
+        {
+          "probe_id": 30,
+          "category": "control",
+          "jaccard": 0.3617021276595745,
+          "pearson": 0.8182735475861583,
+          "mahalanobis": 86.73422241210938
+        }
+      ],
+      "summary": {
+        "jaccard_mean": 0.30781846452098344,
+        "jaccard_median": 0.20754716981132076,
+        "pearson_mean": 0.5759429083620236,
+        "pearson_median": 0.5867333891206948,
+        "mahalanobis_mean": 2048.845075207372,
+        "mahalanobis_median": 2015.1722412109375,
+        "N": 100,
+        "cal_val_mse": 0.1017027422785759,
+        "eval_mse": 0.18001052737236023,
+        "runtime_sec": 1.2082223892211914
+      },
+      "by_category": {
+        "refusal": {
+          "n": 1,
+          "jacc_med": 0.4883720930232558,
+          "maha_med": 1149.684326171875
+        },
+        "induction": {
+          "n": 5,
+          "jacc_med": 0.03225806451612903,
+          "maha_med": 4726.64013671875
+        },
+        "ioi": {
+          "n": 5,
+          "jacc_med": 0.12280701754385964,
+          "maha_med": 2491.0126953125
+        },
+        "syntax": {
+          "n": 3,
+          "jacc_med": 0.28,
+          "maha_med": 571.50146484375
+        },
+        "coref": {
+          "n": 3,
+          "jacc_med": 0.391304347826087,
+          "maha_med": 3136.801513671875
+        },
+        "control": {
+          "n": 1,
+          "jacc_med": 0.3617021276595745,
+          "maha_med": 86.73422241210938
+        },
+        "arithmetic": {
+          "n": 5,
+          "jacc_med": 0.14285714285714285,
+          "maha_med": 2595.510986328125
+        },
+        "factual": {
+          "n": 5,
+          "jacc_med": 0.5238095238095238,
+          "maha_med": 1337.886962890625
+        },
+        "lang": {
+          "n": 3,
+          "jacc_med": 0.8285714285714286,
+          "maha_med": 411.5267333984375
+        }
+      }
+    },
+    "N=500": {
+      "per_probe": [
+        {
+          "probe_id": 0,
+          "category": "ioi",
+          "jaccard": 0.2549019607843137,
+          "pearson": 0.6976189103936189,
+          "mahalanobis": 1971.2808837890625
+        },
+        {
+          "probe_id": 1,
+          "category": "ioi",
+          "jaccard": 0.12280701754385964,
+          "pearson": 0.4947129489959028,
+          "mahalanobis": 2747.444580078125
+        },
+        {
+          "probe_id": 2,
+          "category": "ioi",
+          "jaccard": 0.28,
+          "pearson": 0.8312581456321014,
+          "mahalanobis": 1509.966796875
+        },
+        {
+          "probe_id": 3,
+          "category": "ioi",
+          "jaccard": 0.30612244897959184,
+          "pearson": 0.7452351216459119,
+          "mahalanobis": 2033.747314453125
+        },
+        {
+          "probe_id": 4,
+          "category": "ioi",
+          "jaccard": 0.4883720930232558,
+          "pearson": 0.824837928203137,
+          "mahalanobis": 2585.7705078125
+        },
+        {
+          "probe_id": 5,
+          "category": "induction",
+          "jaccard": 0.03225806451612903,
+          "pearson": -0.2422384749651994,
+          "mahalanobis": 4924.9375
+        },
+        {
+          "probe_id": 6,
+          "category": "induction",
+          "jaccard": 0.0,
+          "pearson": 0.0,
+          "mahalanobis": 4726.64013671875
+        },
+        {
+          "probe_id": 7,
+          "category": "induction",
+          "jaccard": 0.015873015873015872,
+          "pearson": 0.3188480659155907,
+          "mahalanobis": 5298.7080078125
+        },
+        {
+          "probe_id": 8,
+          "category": "induction",
+          "jaccard": 0.20754716981132076,
+          "pearson": 0.5038330576652442,
+          "mahalanobis": 3155.919677734375
+        },
+        {
+          "probe_id": 9,
+          "category": "induction",
+          "jaccard": 0.2549019607843137,
+          "pearson": 0.35229674199971484,
+          "mahalanobis": 2697.136962890625
+        },
+        {
+          "probe_id": 10,
+          "category": "factual",
+          "jaccard": 0.6410256410256411,
+          "pearson": 0.9051332521345725,
+          "mahalanobis": 1797.6197509765625
+        },
+        {
+          "probe_id": 11,
+          "category": "factual",
+          "jaccard": 0.5609756097560976,
+          "pearson": 0.7507031619217331,
+          "mahalanobis": 1394.8778076171875
+        },
+        {
+          "probe_id": 12,
+          "category": "factual",
+          "jaccard": 0.391304347826087,
+          "pearson": 0.8023897415595873,
+          "mahalanobis": 222.6150360107422
+        },
+        {
+          "probe_id": 13,
+          "category": "factual",
+          "jaccard": 0.6,
+          "pearson": 0.8534323091632657,
+          "mahalanobis": 1598.915283203125
+        },
+        {
+          "probe_id": 14,
+          "category": "factual",
+          "jaccard": 0.04918032786885246,
+          "pearson": 0.5042235008373743,
+          "mahalanobis": 948.0955810546875
+        },
+        {
+          "probe_id": 15,
+          "category": "arithmetic",
+          "jaccard": 0.4222222222222222,
+          "pearson": 0.9643405723412091,
+          "mahalanobis": 750.5701904296875
+        },
+        {
+          "probe_id": 16,
+          "category": "arithmetic",
+          "jaccard": 0.18518518518518517,
+          "pearson": 0.9293381562638323,
+          "mahalanobis": 196.29705810546875
+        },
+        {
+          "probe_id": 17,
+          "category": "arithmetic",
+          "jaccard": 0.28,
+          "pearson": 0.9122766050220544,
+          "mahalanobis": 1567.449462890625
+        },
+        {
+          "probe_id": 18,
+          "category": "arithmetic",
+          "jaccard": 0.4222222222222222,
+          "pearson": 0.5243085899328473,
+          "mahalanobis": 2728.333740234375
+        },
+        {
+          "probe_id": 19,
+          "category": "arithmetic",
+          "jaccard": 0.4222222222222222,
+          "pearson": 0.8259198545320547,
+          "mahalanobis": 1696.4635009765625
+        },
+        {
+          "probe_id": 20,
+          "category": "coref",
+          "jaccard": 0.6410256410256411,
+          "pearson": 0.752457665243452,
+          "mahalanobis": 602.8941650390625
+        },
+        {
+          "probe_id": 21,
+          "category": "coref",
+          "jaccard": 0.04918032786885246,
+          "pearson": 0.17830251091694269,
+          "mahalanobis": 3176.114990234375
+        },
+        {
+          "probe_id": 22,
+          "category": "coref",
+          "jaccard": 0.2549019607843137,
+          "pearson": 0.5454715891539341,
+          "mahalanobis": 3578.3095703125
+        },
+        {
+          "probe_id": 23,
+          "category": "lang",
+          "jaccard": 0.8285714285714286,
+          "pearson": 0.9578651800298474,
+          "mahalanobis": 408.669677734375
+        },
+        {
+          "probe_id": 24,
+          "category": "lang",
+          "jaccard": 0.6842105263157895,
+          "pearson": 0.9478213833650335,
+          "mahalanobis": 723.3101196289062
+        },
+        {
+          "probe_id": 25,
+          "category": "lang",
+          "jaccard": 0.6,
+          "pearson": 0.9764209037130392,
+          "mahalanobis": 281.6669006347656
+        },
+        {
+          "probe_id": 26,
+          "category": "syntax",
+          "jaccard": 0.16363636363636364,
+          "pearson": 0.27096056366894866,
+          "mahalanobis": 532.9556884765625
+        },
+        {
+          "probe_id": 27,
+          "category": "syntax",
+          "jaccard": 0.6410256410256411,
+          "pearson": 0.8604176428332108,
+          "mahalanobis": 80.92841339111328
+        },
+        {
+          "probe_id": 28,
+          "category": "syntax",
+          "jaccard": 0.5609756097560976,
+          "pearson": 0.9091543468175604,
+          "mahalanobis": 79.1622085571289
+        },
+        {
+          "probe_id": 29,
+          "category": "refusal",
+          "jaccard": 0.4883720930232558,
+          "pearson": 0.6342898664178667,
+          "mahalanobis": 1243.6181640625
+        },
+        {
+          "probe_id": 30,
+          "category": "control",
+          "jaccard": 0.4883720930232558,
+          "pearson": 0.8806529985568425,
+          "mahalanobis": 59.44945526123047
+        }
+      ],
+      "summary": {
+        "jaccard_mean": 0.3657223611185474,
+        "jaccard_median": 0.391304347826087,
+        "pearson_mean": 0.65846073677133,
+        "pearson_median": 0.752457665243452,
+        "mahalanobis_mean": 1784.5119075159873,
+        "mahalanobis_median": 1567.449462890625,
+        "N": 500,
+        "cal_val_mse": 0.05035662651062012,
+        "eval_mse": 0.11530548334121704,
+        "runtime_sec": 2.0759851932525635
+      },
+      "by_category": {
+        "refusal": {
+          "n": 1,
+          "jacc_med": 0.4883720930232558,
+          "maha_med": 1243.6181640625
+        },
+        "induction": {
+          "n": 5,
+          "jacc_med": 0.03225806451612903,
+          "maha_med": 4726.64013671875
+        },
+        "ioi": {
+          "n": 5,
+          "jacc_med": 0.28,
+          "maha_med": 2033.747314453125
+        },
+        "syntax": {
+          "n": 3,
+          "jacc_med": 0.5609756097560976,
+          "maha_med": 80.92841339111328
+        },
+        "coref": {
+          "n": 3,
+          "jacc_med": 0.2549019607843137,
+          "maha_med": 3176.114990234375
+        },
+        "control": {
+          "n": 1,
+          "jacc_med": 0.4883720930232558,
+          "maha_med": 59.44945526123047
+        },
+        "arithmetic": {
+          "n": 5,
+          "jacc_med": 0.4222222222222222,
+          "maha_med": 1567.449462890625
+        },
+        "factual": {
+          "n": 5,
+          "jacc_med": 0.5609756097560976,
+          "maha_med": 1394.8778076171875
+        },
+        "lang": {
+          "n": 3,
+          "jacc_med": 0.6842105263157895,
+          "maha_med": 408.669677734375
+        }
+      }
+    },
+    "N=2000": {
+      "per_probe": [
+        {
+          "probe_id": 0,
+          "category": "ioi",
+          "jaccard": 0.3333333333333333,
+          "pearson": 0.7823415345986495,
+          "mahalanobis": 1561.752197265625
+        },
+        {
+          "probe_id": 1,
+          "category": "ioi",
+          "jaccard": 0.28,
+          "pearson": 0.6800461195900207,
+          "mahalanobis": 2079.009521484375
+        },
+        {
+          "probe_id": 2,
+          "category": "ioi",
+          "jaccard": 0.28,
+          "pearson": 0.8545551421127423,
+          "mahalanobis": 1465.9132080078125
+        },
+        {
+          "probe_id": 3,
+          "category": "ioi",
+          "jaccard": 0.45454545454545453,
+          "pearson": 0.9224929090886838,
+          "mahalanobis": 1250.2115478515625
+        },
+        {
+          "probe_id": 4,
+          "category": "ioi",
+          "jaccard": 0.4883720930232558,
+          "pearson": 0.7908605213484776,
+          "mahalanobis": 2745.33203125
+        },
+        {
+          "probe_id": 5,
+          "category": "induction",
+          "jaccard": 0.04918032786885246,
+          "pearson": -0.17960905835921828,
+          "mahalanobis": 4842.84716796875
+        },
+        {
+          "probe_id": 6,
+          "category": "induction",
+          "jaccard": 0.0,
+          "pearson": 0.0,
+          "mahalanobis": 4726.64013671875
+        },
+        {
+          "probe_id": 7,
+          "category": "induction",
+          "jaccard": 0.015873015873015872,
+          "pearson": 0.31884806591559073,
+          "mahalanobis": 5286.33837890625
+        },
+        {
+          "probe_id": 8,
+          "category": "induction",
+          "jaccard": 0.20754716981132076,
+          "pearson": 0.6380662487099844,
+          "mahalanobis": 3134.711181640625
+        },
+        {
+          "probe_id": 9,
+          "category": "induction",
+          "jaccard": 0.4222222222222222,
+          "pearson": 0.4788215728132868,
+          "mahalanobis": 2368.901611328125
+        },
+        {
+          "probe_id": 10,
+          "category": "factual",
+          "jaccard": 0.5238095238095238,
+          "pearson": 0.860323846825924,
+          "mahalanobis": 2171.872314453125
+        },
+        {
+          "probe_id": 11,
+          "category": "factual",
+          "jaccard": 0.7777777777777778,
+          "pearson": 0.8453057073340409,
+          "mahalanobis": 1293.0701904296875
+        },
+        {
+          "probe_id": 12,
+          "category": "factual",
+          "jaccard": 0.6,
+          "pearson": 0.9339102927863063,
+          "mahalanobis": 123.24446105957031
+        },
+        {
+          "probe_id": 13,
+          "category": "factual",
+          "jaccard": 0.7777777777777778,
+          "pearson": 0.9961043856015832,
+          "mahalanobis": 317.62548828125
+        },
+        {
+          "probe_id": 14,
+          "category": "factual",
+          "jaccard": 0.04918032786885246,
+          "pearson": 0.5042235008373738,
+          "mahalanobis": 949.603271484375
+        },
+        {
+          "probe_id": 15,
+          "category": "arithmetic",
+          "jaccard": 0.4222222222222222,
+          "pearson": 0.9660344867933108,
+          "mahalanobis": 843.5188598632812
+        },
+        {
+          "probe_id": 16,
+          "category": "arithmetic",
+          "jaccard": 0.28,
+          "pearson": 0.9799918682496924,
+          "mahalanobis": 131.27769470214844
+        },
+        {
+          "probe_id": 17,
+          "category": "arithmetic",
+          "jaccard": 0.28,
+          "pearson": 0.9229591390600367,
+          "mahalanobis": 1586.4556884765625
+        },
+        {
+          "probe_id": 18,
+          "category": "arithmetic",
+          "jaccard": 0.6842105263157895,
+          "pearson": 0.7982036012496763,
+          "mahalanobis": 1773.611083984375
+        },
+        {
+          "probe_id": 19,
+          "category": "arithmetic",
+          "jaccard": 0.5238095238095238,
+          "pearson": 0.8310213326061151,
+          "mahalanobis": 1656.4031982421875
+        },
+        {
+          "probe_id": 20,
+          "category": "coref",
+          "jaccard": 0.6410256410256411,
+          "pearson": 0.6973538627279549,
+          "mahalanobis": 649.2431640625
+        },
+        {
+          "probe_id": 21,
+          "category": "coref",
+          "jaccard": 0.03225806451612903,
+          "pearson": 0.4994688826943427,
+          "mahalanobis": 3085.488525390625
+        },
+        {
+          "probe_id": 22,
+          "category": "coref",
+          "jaccard": 0.20754716981132076,
+          "pearson": 0.5439568949363736,
+          "mahalanobis": 3571.413818359375
+        },
+        {
+          "probe_id": 23,
+          "category": "lang",
+          "jaccard": 0.7777777777777778,
+          "pearson": 0.9871221712681799,
+          "mahalanobis": 410.2392272949219
+        },
+        {
+          "probe_id": 24,
+          "category": "lang",
+          "jaccard": 0.7297297297297297,
+          "pearson": 0.9391303697959067,
+          "mahalanobis": 660.5233154296875
+        },
+        {
+          "probe_id": 25,
+          "category": "lang",
+          "jaccard": 0.7297297297297297,
+          "pearson": 0.9658846809984675,
+          "mahalanobis": 379.4408874511719
+        },
+        {
+          "probe_id": 26,
+          "category": "syntax",
+          "jaccard": 0.9393939393939394,
+          "pearson": 0.9890121161597694,
+          "mahalanobis": 45.561458587646484
+        },
+        {
+          "probe_id": 27,
+          "category": "syntax",
+          "jaccard": 0.7777777777777778,
+          "pearson": 0.9623631204663688,
+          "mahalanobis": 136.167724609375
+        },
+        {
+          "probe_id": 28,
+          "category": "syntax",
+          "jaccard": 0.7777777777777778,
+          "pearson": 0.9938419869588582,
+          "mahalanobis": 32.026371002197266
+        },
+        {
+          "probe_id": 29,
+          "category": "refusal",
+          "jaccard": 0.4883720930232558,
+          "pearson": 0.6301236546364481,
+          "mahalanobis": 1312.987548828125
+        },
+        {
+          "probe_id": 30,
+          "category": "control",
+          "jaccard": 0.4883720930232558,
+          "pearson": 0.8562012266643321,
+          "mahalanobis": 141.94480895996094
+        }
+      ],
+      "summary": {
+        "jaccard_mean": 0.45289106741436314,
+        "jaccard_median": 0.4883720930232558,
+        "pearson_mean": 0.7415793607893316,
+        "pearson_median": 0.8453057073340409,
+        "mahalanobis_mean": 1636.5605188185168,
+        "mahalanobis_median": 1312.987548828125,
+        "N": 2000,
+        "cal_val_mse": 0.027924837544560432,
+        "eval_mse": 0.08852790296077728,
+        "runtime_sec": 2.8191850185394287
+      },
+      "by_category": {
+        "refusal": {
+          "n": 1,
+          "jacc_med": 0.4883720930232558,
+          "maha_med": 1312.987548828125
+        },
+        "induction": {
+          "n": 5,
+          "jacc_med": 0.04918032786885246,
+          "maha_med": 4726.64013671875
+        },
+        "ioi": {
+          "n": 5,
+          "jacc_med": 0.3333333333333333,
+          "maha_med": 1561.752197265625
+        },
+        "syntax": {
+          "n": 3,
+          "jacc_med": 0.7777777777777778,
+          "maha_med": 45.561458587646484
+        },
+        "coref": {
+          "n": 3,
+          "jacc_med": 0.20754716981132076,
+          "maha_med": 3085.488525390625
+        },
+        "control": {
+          "n": 1,
+          "jacc_med": 0.4883720930232558,
+          "maha_med": 141.94480895996094
+        },
+        "arithmetic": {
+          "n": 5,
+          "jacc_med": 0.4222222222222222,
+          "maha_med": 1586.4556884765625
+        },
+        "factual": {
+          "n": 5,
+          "jacc_med": 0.6,
+          "maha_med": 949.603271484375
+        },
+        "lang": {
+          "n": 3,
+          "jacc_med": 0.7297297297297297,
+          "maha_med": 410.2392272949219
+        }
+      }
+    },
+    "N=5000": {
+      "per_probe": [
+        {
+          "probe_id": 0,
+          "category": "ioi",
+          "jaccard": 0.391304347826087,
+          "pearson": 0.7883375266115751,
+          "mahalanobis": 1642.925048828125
+        },
+        {
+          "probe_id": 1,
+          "category": "ioi",
+          "jaccard": 0.18518518518518517,
+          "pearson": 0.57772364047034,
+          "mahalanobis": 2446.35400390625
+        },
+        {
+          "probe_id": 2,
+          "category": "ioi",
+          "jaccard": 0.18518518518518517,
+          "pearson": 0.8356339824963656,
+          "mahalanobis": 1687.625244140625
+        },
+        {
+          "probe_id": 3,
+          "category": "ioi",
+          "jaccard": 0.7777777777777778,
+          "pearson": 0.9384604606059554,
+          "mahalanobis": 932.1411743164062
+        },
+        {
+          "probe_id": 4,
+          "category": "ioi",
+          "jaccard": 0.23076923076923078,
+          "pearson": 0.785582293612956,
+          "mahalanobis": 4005.2255859375
+        },
+        {
+          "probe_id": 5,
+          "category": "induction",
+          "jaccard": 0.03225806451612903,
+          "pearson": -0.29299389540029064,
+          "mahalanobis": 4959.9072265625
+        },
+        {
+          "probe_id": 6,
+          "category": "induction",
+          "jaccard": 0.0,
+          "pearson": 0.0,
+          "mahalanobis": 4726.64013671875
+        },
+        {
+          "probe_id": 7,
+          "category": "induction",
+          "jaccard": 0.015873015873015872,
+          "pearson": 0.3188480659155902,
+          "mahalanobis": 5177.0869140625
+        },
+        {
+          "probe_id": 8,
+          "category": "induction",
+          "jaccard": 0.23076923076923078,
+          "pearson": 0.6159525595449064,
+          "mahalanobis": 2953.68994140625
+        },
+        {
+          "probe_id": 9,
+          "category": "induction",
+          "jaccard": 0.30612244897959184,
+          "pearson": 0.3813875917922797,
+          "mahalanobis": 2529.584228515625
+        },
+        {
+          "probe_id": 10,
+          "category": "factual",
+          "jaccard": 0.6,
+          "pearson": 0.929642107872183,
+          "mahalanobis": 1342.071044921875
+        },
+        {
+          "probe_id": 11,
+          "category": "factual",
+          "jaccard": 0.8823529411764706,
+          "pearson": 0.9560726840311354,
+          "mahalanobis": 649.81494140625
+        },
+        {
+          "probe_id": 12,
+          "category": "factual",
+          "jaccard": 0.5609756097560976,
+          "pearson": 0.9286489980154438,
+          "mahalanobis": 117.16226196289062
+        },
+        {
+          "probe_id": 13,
+          "category": "factual",
+          "jaccard": 0.8823529411764706,
+          "pearson": 0.9981014638367909,
+          "mahalanobis": 161.4478759765625
+        },
+        {
+          "probe_id": 14,
+          "category": "factual",
+          "jaccard": 0.04918032786885246,
+          "pearson": 0.5042235008373743,
+          "mahalanobis": 953.0242919921875
+        },
+        {
+          "probe_id": 15,
+          "category": "arithmetic",
+          "jaccard": 0.5238095238095238,
+          "pearson": 0.9296119111124826,
+          "mahalanobis": 1059.250244140625
+        },
+        {
+          "probe_id": 16,
+          "category": "arithmetic",
+          "jaccard": 0.28,
+          "pearson": 0.9785573583752419,
+          "mahalanobis": 143.08656311035156
+        },
+        {
+          "probe_id": 17,
+          "category": "arithmetic",
+          "jaccard": 0.28,
+          "pearson": 0.9163255409567753,
+          "mahalanobis": 1574.49951171875
+        },
+        {
+          "probe_id": 18,
+          "category": "arithmetic",
+          "jaccard": 0.7777777777777778,
+          "pearson": 0.938892193581265,
+          "mahalanobis": 966.7510375976562
+        },
+        {
+          "probe_id": 19,
+          "category": "arithmetic",
+          "jaccard": 0.5609756097560976,
+          "pearson": 0.8508358241032621,
+          "mahalanobis": 1440.06884765625
+        },
+        {
+          "probe_id": 20,
+          "category": "coref",
+          "jaccard": 0.6,
+          "pearson": 0.7027367032153978,
+          "mahalanobis": 676.4540405273438
+        },
+        {
+          "probe_id": 21,
+          "category": "coref",
+          "jaccard": 0.04918032786885246,
+          "pearson": 0.34600605641946874,
+          "mahalanobis": 3170.75341796875
+        },
+        {
+          "probe_id": 22,
+          "category": "coref",
+          "jaccard": 0.20754716981132076,
+          "pearson": 0.5430127555274556,
+          "mahalanobis": 3556.000244140625
+        },
+        {
+          "probe_id": 23,
+          "category": "lang",
+          "jaccard": 0.4222222222222222,
+          "pearson": 0.9836197158329878,
+          "mahalanobis": 543.6795043945312
+        },
+        {
+          "probe_id": 24,
+          "category": "lang",
+          "jaccard": 0.7297297297297297,
+          "pearson": 0.9510277219697933,
+          "mahalanobis": 542.7733154296875
+        },
+        {
+          "probe_id": 25,
+          "category": "lang",
+          "jaccard": 0.6842105263157895,
+          "pearson": 0.9894316000719765,
+          "mahalanobis": 242.76368713378906
+        },
+        {
+          "probe_id": 26,
+          "category": "syntax",
+          "jaccard": 0.9393939393939394,
+          "pearson": 0.9957427529037566,
+          "mahalanobis": 34.893226623535156
+        },
+        {
+          "probe_id": 27,
+          "category": "syntax",
+          "jaccard": 0.8823529411764706,
+          "pearson": 0.9885843049308647,
+          "mahalanobis": 67.18218994140625
+        },
+        {
+          "probe_id": 28,
+          "category": "syntax",
+          "jaccard": 0.6842105263157895,
+          "pearson": 0.9858128398913855,
+          "mahalanobis": 44.01401901245117
+        },
+        {
+          "probe_id": 29,
+          "category": "refusal",
+          "jaccard": 0.45454545454545453,
+          "pearson": 0.4787504694344773,
+          "mahalanobis": 1468.50634765625
+        },
+        {
+          "probe_id": 30,
+          "category": "control",
+          "jaccard": 0.5238095238095238,
+          "pearson": 0.8341390066425757,
+          "mahalanobis": 166.6223602294922
+        }
+      ],
+      "summary": {
+        "jaccard_mean": 0.4493506961094134,
+        "jaccard_median": 0.45454545454545453,
+        "pearson_mean": 0.7315712172648958,
+        "pearson_median": 0.8508358241032621,
+        "mahalanobis_mean": 1612.3225315463158,
+        "mahalanobis_median": 1059.250244140625,
+        "N": 5000,
+        "cal_val_mse": 0.021784881129860878,
+        "eval_mse": 0.0871756300330162,
+        "runtime_sec": 6.614304542541504
+      },
+      "by_category": {
+        "refusal": {
+          "n": 1,
+          "jacc_med": 0.45454545454545453,
+          "maha_med": 1468.50634765625
+        },
+        "induction": {
+          "n": 5,
+          "jacc_med": 0.03225806451612903,
+          "maha_med": 4726.64013671875
+        },
+        "ioi": {
+          "n": 5,
+          "jacc_med": 0.23076923076923078,
+          "maha_med": 1687.625244140625
+        },
+        "syntax": {
+          "n": 3,
+          "jacc_med": 0.8823529411764706,
+          "maha_med": 44.01401901245117
+        },
+        "coref": {
+          "n": 3,
+          "jacc_med": 0.20754716981132076,
+          "maha_med": 3170.75341796875
+        },
+        "control": {
+          "n": 1,
+          "jacc_med": 0.5238095238095238,
+          "maha_med": 166.6223602294922
+        },
+        "arithmetic": {
+          "n": 5,
+          "jacc_med": 0.5238095238095238,
+          "maha_med": 1059.250244140625
+        },
+        "factual": {
+          "n": 5,
+          "jacc_med": 0.6,
+          "maha_med": 649.81494140625
+        },
+        "lang": {
+          "n": 3,
+          "jacc_med": 0.6842105263157895,
+          "maha_med": 542.7733154296875
+        }
+      }
+    }
+  }
+}

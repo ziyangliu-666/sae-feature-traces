@@ -1,0 +1,24 @@
+P2: substitute attack results — fake M-compatible activations vs M's probe library
+=====================================================================================
+Target model: Qwen/Qwen3-1.7B layer 14, d_sae=163840, 31 probes
+
+attack                                            jacc     pear       maha         l2
+-------------------------------------------------------------------------------------
+M_on_M                                           1.000    1.000      0.000      0.000
+Qwen/Qwen3-0.6B::ZERO_PAD                        0.000   -0.016   2987.709     31.327
+Qwen/Qwen3-0.6B::RAND_PROJ                       0.000    0.039   3607.994     37.635
+Qwen/Qwen3-0.6B::LEARNED_LIN_all                 1.000    1.000      0.101      0.013
+Qwen/Qwen3-0.6B::LEARNED_LIN_heldout             0.085    0.500   2147.011     24.010
+Qwen/Qwen3-4B::ZERO_PAD                          0.000    0.128   2791.625     28.629
+Qwen/Qwen3-4B::RAND_PROJ                         0.000    0.076   2736.031     30.449
+Qwen/Qwen3-4B::LEARNED_LIN_all                   1.000    1.000      0.101      0.013
+Qwen/Qwen3-4B::LEARNED_LIN_heldout               0.085    0.500   2370.386     24.067
+
+Interpretation:
+  • jaccard  = top-32 feature-id overlap. M_on_M should be ~1.0.
+  • pearson  = correlation of magnitudes on M's top-32. Higher = closer.
+  • maha     = |residual|/sigma_M averaged. Smaller = closer to M.
+  • l2       = euclidean distance on top-32 magnitude vector.
+
+If LEARNED_LIN_heldout jacc < 0.3 AND pear < 0.3 → strong separability; attack is hard.
+If LEARNED_LIN_heldout jacc > 0.7 AND pear > 0.8 → attack succeeds; direction in danger.

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Local credentials and caches
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+.cache/
+wandb/
+
+# Model artifacts
+*.bin
+*.pt
+*.safetensors
+
+# Build/runtime byproducts
+*.log
+texput.log
+.DS_Store
+Thumbs.db

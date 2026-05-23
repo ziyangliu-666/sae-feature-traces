@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "probe_library": "logs/e12_gemma_pilot.json",
+    "sigma_calibration": "logs/sigma_calibration_gemma2_2b_L12.json",
+    "backbone": "google/gemma-2-2b",
+    "layer": 12,
+    "tau_gemma": 1.09,
+    "attacker_model": "F3-exact-optimum-discrete-selection"
+  },
+  "result": {
+    "n_probes": 96,
+    "union_feats": 1372,
+    "joint_z_optimal": 221.64325059438013,
+    "joint_z_baseline_zero": 299.8320133242785,
+    "total_gain": 240195.8791062477,
+    "coverage_mean": 5.354166666666667,
+    "per_probe_z_min": 0.623474845509868,
+    "per_probe_z_median": 263.048526633062,
+    "per_probe_z_max": 612.5467176445828,
+    "margin_over_tau": 203.3424317379634
+  }
+}

@@ -1,0 +1,11 @@
+P3: adversarial distillation attack — held-out probe detection vs attacker sample size
+============================================================================================
+   N_calib    val_mse   eval_mse   jacc_med   pear_med   maha_med    detect?
+--------------------------------------------------------------------------------------------
+       100     0.0188     0.3289      0.049      0.301    2533.96        YES
+       500     0.0002     0.3238      0.049      0.301    2533.96        YES
+      2000     0.0000     0.3254      0.049      0.301    2533.96        YES
+      5000     0.0001     0.3229      0.049      0.301    2533.96        YES
+
+Kill criterion: if at N=500 attacker achieves jacc_med > 0.7 AND maha_med < 5,
+the protocol is too weak. Otherwise, attacker's sample efficiency is our forcing function.

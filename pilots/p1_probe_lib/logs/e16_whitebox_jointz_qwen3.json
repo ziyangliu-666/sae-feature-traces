@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "experiment": "E16: white-box joint-z LoRA attack (E-E)",
+    "backbone": "qwen3",
+    "target": "Qwen/Qwen3-1.7B",
+    "substitute": "Qwen/Qwen3-0.6B",
+    "lora_rank": 64,
+    "n_steps": 3000,
+    "lambda_utils": [
+      0.0,
+      0.1
+    ],
+    "tau_real": 1.13,
+    "base_ppx_no_lora_no_phi": 21.19893192572805,
+    "gpu": "A10G",
+    "wall_s": 1351.0563852787018
+  },
+  "results": {
+    "lambda_util_0.0": {
+      "joint_z": 56.55055756807539,
+      "per_probe_max": 148.9120503174416,
+      "per_probe_median": 51.33797993619794,
+      "per_cat_mean_z": {
+        "ioi": 44.923882588749855,
+        "induction": 44.77075721167593,
+        "coref": 59.53006433027076,
+        "factual": 62.49838312429675,
+        "arithmetic": 67.46066868793669,
+        "lang": 71.4155707014,
+        "syntax": 46.7467427578859,
+        "negation": 53.69212931921925,
+        "entailment": 66.67423720876944,
+        "refusal": 53.78353096836949,
+        "control": 61.75408355851215
+      },
+      "pile_perplexity": 10180621710.806444,
+      "lambda_util": 0.0,
+      "alpha_jointz": 1.0,
+      "lora_rank": 64,
+      "n_steps": 3000,
+      "phi_heldout_r2": 0.13744306564331055,
+      "pre_train_joint_z": 57.37843276878791,
+      "train_loss_last100_mse": 0.7293671554327011,
+      "train_loss_last100_jz": 55.37992332458496,
+      "train_loss_last100_util": 0.0
+    },
+    "lambda_util_0.1": {
+      "joint_z": 7.398122446548453,
+      "per_probe_max": 38.169027210427814,
+      "per_probe_median": 6.339806417255979,
+      "per_cat_mean_z": {
+        "ioi": 5.629687928572447,
+        "induction": 4.882335000532576,
+        "coref": 9.054181480774648,
+        "factual": 6.565596212402285,
+        "arithmetic": 9.975463490075862,
+        "lang": 8.093816095415514,
+        "syntax": 8.197135847082134,
+        "negation": 5.295027381934662,
+        "entailment": 8.173638367951307,
+        "refusal": 10.255980123261594,
+        "control": 10.326020887886068
+      },
+      "pile_perplexity": 243.24000703530015,
+      "lambda_util": 0.1,
+      "alpha_jointz": 1.0,
+      "lora_rank": 64,
+      "n_steps": 3000,
+      "phi_heldout_r2": 0.13744324445724487,
+      "pre_train_joint_z": 57.37843276878791,
+      "train_loss_last100_mse": 0.42750296503305435,
+      "train_loss_last100_jz": 7.832804884910583,
+      "train_loss_last100_util": 0.421081962287426
+    }
+  }
+}

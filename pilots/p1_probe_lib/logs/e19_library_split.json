@@ -1,0 +1,35 @@
+{
+  "metadata": {
+    "library": "logs/probe_library_qwen3_1.7b_L14_k96.json",
+    "sigma_calibration": "logs/sigma_calibration_qwen3_1.7b_L14.json",
+    "tau_pool": 1.509,
+    "n_splits": 50,
+    "split_train": 48,
+    "split_test": 48,
+    "experiment": "F3 probe-aware attacker trained on 48 probes, tested on held-out 48"
+  },
+  "train_z": {
+    "min": 35.30731681027288,
+    "p05": 37.848126027237534,
+    "median": 40.289888894816315,
+    "mean": 40.40179704258842,
+    "p95": 42.62145715669126,
+    "max": 44.90339793623724,
+    "frac_below_tau": 0.0
+  },
+  "test_z": {
+    "min": 45.15251823372137,
+    "p05": 48.459246775109186,
+    "median": 52.61100513700621,
+    "mean": 52.86153541164592,
+    "p95": 58.78695223263685,
+    "max": 60.27924460897247,
+    "frac_below_tau": 0.0
+  },
+  "test_minus_train": {
+    "min": 0.2491202974841329,
+    "median": 12.598585991938869,
+    "mean": 12.459738369057504,
+    "max": 23.123107865805423
+  }
+}

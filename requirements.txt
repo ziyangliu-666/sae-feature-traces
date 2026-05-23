@@ -1,0 +1,10 @@
+datasets==3.1.0
+modal
+numpy<2
+peft
+scikit-learn
+scipy
+sae_lens==6.39.0
+torch==2.6.0
+transformers==4.56.2
+zstandard

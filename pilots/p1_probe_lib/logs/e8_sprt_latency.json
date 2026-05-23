@@ -1,0 +1,127 @@
+{
+  "config": {
+    "alpha": 0.01,
+    "beta": 0.01,
+    "max_openings": 96,
+    "holm_thresholds_first5": [
+      9.169414205363537,
+      9.158941808890182,
+      9.148358579620302,
+      9.137662146478197,
+      9.126850061477157
+    ],
+    "wald_threshold": 4.59511985013459
+  },
+  "per_attacker": [
+    {
+      "attacker": "Qwen/Qwen2.5-1.5B",
+      "wald": {
+        "med_n_stop": 1,
+        "p95_n_stop": 1,
+        "mean_n_stop": 1.0,
+        "TPR": 1.0,
+        "FNR": 0.0
+      },
+      "holm": {
+        "med_n_stop": 1,
+        "p95_n_stop": 1,
+        "mean_n_stop": 1.0,
+        "TPR": 1.0,
+        "FNR": 0.0
+      }
+    },
+    {
+      "attacker": "microsoft/Phi-3.5-mini-instruct",
+      "wald": {
+        "med_n_stop": 1,
+        "p95_n_stop": 1,
+        "mean_n_stop": 1.0,
+        "TPR": 1.0,
+        "FNR": 0.0
+      },
+      "holm": {
+        "med_n_stop": 1,
+        "p95_n_stop": 1,
+        "mean_n_stop": 1.0,
+        "TPR": 1.0,
+        "FNR": 0.0
+      }
+    },
+    {
+      "attacker": "allenai/OLMo-2-1124-7B",
+      "wald": {
+        "med_n_stop": 1,
+        "p95_n_stop": 1,
+        "mean_n_stop": 1.0,
+        "TPR": 1.0,
+        "FNR": 0.0
+      },
+      "holm": {
+        "med_n_stop": 1,
+        "p95_n_stop": 1,
+        "mean_n_stop": 1.0,
+        "TPR": 1.0,
+        "FNR": 0.0
+      }
+    },
+    {
+      "attacker": "Qwen/Qwen3-0.6B",
+      "wald": {
+        "med_n_stop": 1,
+        "p95_n_stop": 1,
+        "mean_n_stop": 1.0,
+        "TPR": 1.0,
+        "FNR": 0.0
+      },
+      "holm": {
+        "med_n_stop": 1,
+        "p95_n_stop": 1,
+        "mean_n_stop": 1.0,
+        "TPR": 1.0,
+        "FNR": 0.0
+      }
+    }
+  ],
+  "honest_baseline": {
+    "wald": {
+      "med_n": 1,
+      "p95_n": 1,
+      "FPR": 0.0
+    },
+    "holm": {
+      "med_n": 1,
+      "p95_n": 1,
+      "FPR": 0.0
+    }
+  },
+  "session_fpr_by_k": [
+    {
+      "k": 1,
+      "naive_k_alpha_union": 0.01,
+      "independent_exact": 0.010000000000000009,
+      "empirical_copula": 0.01041,
+      "mean_rho": 0.8833866093690942
+    },
+    {
+      "k": 2,
+      "naive_k_alpha_union": 0.02,
+      "independent_exact": 0.01990000000000003,
+      "empirical_copula": 0.015,
+      "mean_rho": 0.8833866093690942
+    },
+    {
+      "k": 3,
+      "naive_k_alpha_union": 0.03,
+      "independent_exact": 0.029700999999999977,
+      "empirical_copula": 0.01761,
+      "mean_rho": 0.8833866093690942
+    },
+    {
+      "k": 4,
+      "naive_k_alpha_union": 0.04,
+      "independent_exact": 0.039403990000000055,
+      "empirical_copula": 0.01935,
+      "mean_rho": 0.8833866093690942
+    }
+  ]
+}

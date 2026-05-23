@@ -1,0 +1,54 @@
+{
+  "thresholds": {
+    "tau_maha": 3.0,
+    "tau_overlap_within_2sigma": 0.8
+  },
+  "per_attacker": [
+    {
+      "attacker": "Qwen/Qwen2.5-1.5B",
+      "d_model": 1536,
+      "linear_fit_r2": 0.9999995547094045,
+      "overlap_within_2sigma_mean": 0.2275390625,
+      "overlap_within_2sigma_med": 0.1875,
+      "maha_mean": 57.31666204343884,
+      "maha_med": 52.05290631426672,
+      "n_probes": 96,
+      "detected": true
+    },
+    {
+      "attacker": "microsoft/Phi-3.5-mini-instruct",
+      "d_model": 3072,
+      "linear_fit_r2": 0.9999999505035255,
+      "overlap_within_2sigma_mean": 0.2275390625,
+      "overlap_within_2sigma_med": 0.1875,
+      "maha_mean": 57.378230665233126,
+      "maha_med": 52.57690828705587,
+      "n_probes": 96,
+      "detected": true
+    },
+    {
+      "attacker": "allenai/OLMo-2-1124-7B",
+      "d_model": 4096,
+      "linear_fit_r2": 0.999997955810386,
+      "overlap_within_2sigma_mean": 0.2275390625,
+      "overlap_within_2sigma_med": 0.1875,
+      "maha_mean": 57.312249197348855,
+      "maha_med": 52.05290631426672,
+      "n_probes": 96,
+      "detected": true
+    },
+    {
+      "attacker": "Qwen/Qwen3-0.6B",
+      "d_model": 1024,
+      "linear_fit_r2": 0.9999991739397274,
+      "overlap_within_2sigma_mean": 0.22786458333333334,
+      "overlap_within_2sigma_med": 0.1875,
+      "maha_mean": 57.20438385136572,
+      "maha_med": 51.99534882414804,
+      "n_probes": 96,
+      "detected": true
+    }
+  ],
+  "n_detected": 4,
+  "n_attackers": 4
+}

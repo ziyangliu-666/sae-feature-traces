@@ -1,0 +1,160 @@
+{
+  "per_class": {
+    "arithmetic": {
+      "n_probes": 12,
+      "feature_entropy": 5.023157999997966,
+      "feature_uniqueness": 0.5572916666666666,
+      "n_unique_features": 214,
+      "sigma_median": 0.04996922239661217,
+      "sigma_mean": 0.06461308157070061,
+      "specificity_median": 83.82127380371094
+    },
+    "control": {
+      "n_probes": 4,
+      "feature_entropy": 4.6963164420489685,
+      "feature_uniqueness": 0.890625,
+      "n_unique_features": 114,
+      "sigma_median": 0.07235685363411903,
+      "sigma_mean": 0.09717355965452996,
+      "specificity_median": 60.3698616027832
+    },
+    "coref": {
+      "n_probes": 10,
+      "feature_entropy": 4.448269345250813,
+      "feature_uniqueness": 0.38125,
+      "n_unique_features": 122,
+      "sigma_median": 0.07687319070100784,
+      "sigma_mean": 0.08900426301313757,
+      "specificity_median": 25134.8310546875
+    },
+    "entailment": {
+      "n_probes": 6,
+      "feature_entropy": 4.673560006496735,
+      "feature_uniqueness": 0.6666666666666666,
+      "n_unique_features": 128,
+      "sigma_median": 0.05744396336376667,
+      "sigma_mean": 0.07474036570819247,
+      "specificity_median": 18611.6875
+    },
+    "factual": {
+      "n_probes": 14,
+      "feature_entropy": 5.294821835458028,
+      "feature_uniqueness": 0.5982142857142857,
+      "n_unique_features": 268,
+      "sigma_median": 0.04984782822430134,
+      "sigma_mean": 0.06234088841442239,
+      "specificity_median": 34.484758377075195
+    },
+    "induction": {
+      "n_probes": 14,
+      "feature_entropy": 5.192950685869614,
+      "feature_uniqueness": 0.5379464285714286,
+      "n_unique_features": 241,
+      "sigma_median": 0.09916778653860092,
+      "sigma_mean": 0.13715334251940187,
+      "specificity_median": 25052.6845703125
+    },
+    "ioi": {
+      "n_probes": 14,
+      "feature_entropy": 5.450543089703204,
+      "feature_uniqueness": 0.65625,
+      "n_unique_features": 294,
+      "sigma_median": 0.10679014399647713,
+      "sigma_mean": 0.13359397866548434,
+      "specificity_median": 25252.7919921875
+    },
+    "lang": {
+      "n_probes": 6,
+      "feature_entropy": 4.366705610426708,
+      "feature_uniqueness": 0.4947916666666667,
+      "n_unique_features": 95,
+      "sigma_median": 0.02694314531981945,
+      "sigma_mean": 0.03942171170675258,
+      "specificity_median": 42.84326362609863
+    },
+    "negation": {
+      "n_probes": 6,
+      "feature_entropy": 4.605711050972775,
+      "feature_uniqueness": 0.6666666666666666,
+      "n_unique_features": 128,
+      "sigma_median": 0.03937876783311367,
+      "sigma_mean": 0.06401443774666404,
+      "specificity_median": 21.882248878479004
+    },
+    "refusal": {
+      "n_probes": 4,
+      "feature_entropy": 4.227741772763791,
+      "feature_uniqueness": 0.640625,
+      "n_unique_features": 82,
+      "sigma_median": 0.006787280784919858,
+      "sigma_mean": 0.031290693278795814,
+      "specificity_median": 2.657240152359009
+    },
+    "syntax": {
+      "n_probes": 6,
+      "feature_entropy": 4.861052955752085,
+      "feature_uniqueness": 0.765625,
+      "n_unique_features": 147,
+      "sigma_median": 0.08856482058763504,
+      "sigma_mean": 0.11113808967935886,
+      "specificity_median": 38.23989295959473
+    }
+  },
+  "attackability_used": {
+    "ioi": 3.921392713952867,
+    "induction": 2.6000220679732413,
+    "coref": 3.507861038400282,
+    "factual": 6.626110166622276,
+    "arithmetic": 2.904722861563405,
+    "lang": 4.1148380133573275,
+    "syntax": 7.803203250857881,
+    "negation": 3.0596754025389536,
+    "entailment": 3.714259600027546,
+    "refusal": 4.637659786985217,
+    "control": 4.445291412067828
+  },
+  "common_classes": [
+    "arithmetic",
+    "control",
+    "coref",
+    "entailment",
+    "factual",
+    "induction",
+    "ioi",
+    "lang",
+    "negation",
+    "refusal",
+    "syntax"
+  ],
+  "attn_cats": [
+    "coref",
+    "induction",
+    "ioi"
+  ],
+  "spearman": {
+    "feature_entropy": {
+      "rho": -0.07272727272727274,
+      "p": 0.831716405381337
+    },
+    "feature_uniqueness": {
+      "rho": 0.4100238428203847,
+      "p": 0.21040269908990397
+    },
+    "sigma_median": {
+      "rho": -0.19090909090909092,
+      "p": 0.5739131682855213
+    }
+  },
+  "partial_regression": {
+    "beta_entropy": 0.19079340576688483,
+    "beta_uniqueness": 0.5920334103433191,
+    "beta_sigma": -0.16441884365592407,
+    "intercept": 4.303185119486075,
+    "attn_mean_raw": 3.343091940108797,
+    "surf_mean_raw": 4.663220061752554,
+    "raw_gap": -1.3201281216437573,
+    "attn_mean_residual": -0.44106742961994466,
+    "surf_mean_residual": 0.16540028610747914,
+    "residual_gap": -0.6064677157274239
+  }
+}

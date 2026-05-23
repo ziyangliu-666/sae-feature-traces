@@ -1,0 +1,111 @@
+{
+  "metadata": {
+    "target": "Qwen/Qwen3-1.7B",
+    "substitute": "Qwen/Qwen3-0.6B",
+    "lora_rank": 64,
+    "lora_target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "n_probes": 96,
+    "top_k": 32,
+    "n_train_steps_per_stage": 1500,
+    "honest_tau_99": 0.8205523454348703,
+    "sub_baseline_pile_ppx_no_lora": 21.19878242956851,
+    "wall_s": 1451.4934153556824
+  },
+  "results": {
+    "baseline_phi_only": {
+      "joint_z": 57.37843276878791,
+      "per_cat_mean_z": {
+        "ioi": 44.923882588749855,
+        "induction": 44.77075721167593,
+        "coref": 59.53006433027076,
+        "factual": 62.49838312429675,
+        "arithmetic": 74.08367029363687,
+        "lang": 71.4155707014,
+        "syntax": 46.7467427578859,
+        "negation": 53.69212931921925,
+        "entailment": 66.67423720876944,
+        "refusal": 53.78353096836949,
+        "control": 61.75408355851215
+      },
+      "per_probe_z_median": 52.57690828705587,
+      "per_probe_z_max": 148.9120503174416,
+      "per_probe_z_min": 16.036650395772035,
+      "pile_perplexity": 21.19878242956851,
+      "phi_heldout_r2_init": 0.13742196559906006
+    },
+    "stageA_pure_probe": {
+      "joint_z": 4.192544754159829,
+      "per_cat_mean_z": {
+        "ioi": 3.921392713952867,
+        "induction": 2.6000220679732413,
+        "coref": 3.507861038400282,
+        "factual": 6.626110166622276,
+        "arithmetic": 2.904722861563405,
+        "lang": 4.1148380133573275,
+        "syntax": 7.803203250857881,
+        "negation": 3.0596754025389536,
+        "entailment": 3.714259600027546,
+        "refusal": 4.637659786985217,
+        "control": 4.445291412067828
+      },
+      "per_probe_z_median": 3.038539539419984,
+      "per_probe_z_max": 40.16481942074104,
+      "per_probe_z_min": 0.607357905214663,
+      "pile_perplexity": 32.84414320253714,
+      "lambda_probe": 1.0,
+      "lambda_util": 0.0
+    },
+    "stageB_balanced": {
+      "joint_z": 7.4842391677728095,
+      "per_cat_mean_z": {
+        "ioi": 6.641806249859444,
+        "induction": 6.877889375854521,
+        "coref": 6.803754063591579,
+        "factual": 6.459028041957915,
+        "arithmetic": 9.437596554962541,
+        "lang": 10.949844715708679,
+        "syntax": 5.479538758799452,
+        "negation": 6.00241919555878,
+        "entailment": 9.643963324500483,
+        "refusal": 7.641788386759801,
+        "control": 8.618594987218362
+      },
+      "per_probe_z_median": 6.567885054733544,
+      "per_probe_z_max": 22.326130577827367,
+      "per_probe_z_min": 2.030654352065636,
+      "pile_perplexity": 50.97775395177266,
+      "lambda_probe": 1.0,
+      "lambda_util": 1.0
+    },
+    "stageC_low_util": {
+      "joint_z": 6.268449109749743,
+      "per_cat_mean_z": {
+        "ioi": 4.819421608872114,
+        "induction": 5.035932504036195,
+        "coref": 6.591616457647779,
+        "factual": 5.06267309935289,
+        "arithmetic": 9.04224669439354,
+        "lang": 7.900428601210646,
+        "syntax": 4.770797381472703,
+        "negation": 4.503324787338767,
+        "entailment": 14.291761375305065,
+        "refusal": 4.083453065067594,
+        "control": 3.3409808807212027
+      },
+      "per_probe_z_median": 4.954000507720494,
+      "per_probe_z_max": 52.62351905077091,
+      "per_probe_z_min": 0.7606499334416142,
+      "pile_perplexity": 63.15845113337747,
+      "lambda_probe": 1.0,
+      "lambda_util": 0.1
+    }
+  }
+}

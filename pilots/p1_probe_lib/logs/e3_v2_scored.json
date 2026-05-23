@@ -1,0 +1,36 @@
+{
+  "tau_honest_joint_99th_pct": 0.8205523454348703,
+  "honest_joint_median": 0.7977806949626636,
+  "per_attacker": [
+    {
+      "attacker": "Qwen/Qwen2.5-1.5B",
+      "r2_train": 0.7017926275730133,
+      "r2_heldout": 0.3862454891204834,
+      "joint_maha": 55.95001005555235,
+      "detected_at_fpr1pct": true
+    },
+    {
+      "attacker": "microsoft/Phi-3.5-mini-instruct",
+      "r2_train": 0.9980347801465541,
+      "r2_heldout": -0.8973333835601807,
+      "joint_maha": 56.38136736072651,
+      "detected_at_fpr1pct": true
+    },
+    {
+      "attacker": "allenai/OLMo-2-1124-7B",
+      "r2_train": 0.9906803127378225,
+      "r2_heldout": -5.968968391418457,
+      "joint_maha": 85.45270439736021,
+      "detected_at_fpr1pct": true
+    },
+    {
+      "attacker": "Qwen/Qwen3-0.6B",
+      "r2_train": 0.14335918426513672,
+      "r2_heldout": 0.15135818719863892,
+      "joint_maha": 57.37843276878791,
+      "detected_at_fpr1pct": true
+    }
+  ],
+  "n_detected": 4,
+  "n_total": 4
+}

@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "experiment": "E16: white-box joint-z LoRA attack (E-E)",
+    "backbone": "qwen3",
+    "target": "Qwen/Qwen3-1.7B",
+    "substitute": "Qwen/Qwen3-0.6B",
+    "lora_rank": 64,
+    "n_steps": 3000,
+    "lambda_utils": [
+      0.0,
+      0.1
+    ],
+    "alpha_jzs": [
+      0.0,
+      0.1
+    ],
+    "tau_real": 1.13,
+    "base_ppx_no_lora_no_phi": 21.19893192572805,
+    "gpu": "A10G",
+    "wall_s": 2680.432569503784
+  },
+  "results": {
+    "alpha_jz_0.0_lambda_util_0.0": {
+      "joint_z": 6.888049210951014,
+      "per_probe_max": 57.57774518783008,
+      "per_probe_median": 5.386614901604954,
+      "per_cat_mean_z": {
+        "ioi": 7.619844393374387,
+        "induction": 5.351825356384951,
+        "coref": 6.604909552899649,
+        "factual": 8.211834612859848,
+        "arithmetic": 6.091780662638861,
+        "lang": 7.612073214575308,
+        "syntax": 4.9971783100345215,
+        "negation": 9.333441839713046,
+        "entailment": 9.172825610999135,
+        "refusal": 5.792316559125035,
+        "control": 3.9177049013834204
+      },
+      "pile_perplexity": 31.858655355246146,
+      "lambda_util": 0.0,
+      "alpha_jointz": 0.0,
+      "lora_rank": 64,
+      "n_steps": 3000,
+      "phi_heldout_r2": 0.13744306564331055,
+      "pre_train_joint_z": 57.37843276878791,
+      "train_loss_last100_mse": 0.0017769718955969438,
+      "train_loss_last100_jz": 7.038851618766785,
+      "train_loss_last100_util": 0.0
+    },
+    "alpha_jz_0.0_lambda_util_0.1": {
+      "joint_z": 49.455534308484324,
+      "per_probe_max": 136.4253228908193,
+      "per_probe_median": 44.27876174000963,
+      "per_cat_mean_z": {
+        "ioi": 42.06511397148298,
+        "induction": 41.07217828395188,
+        "coref": 36.70919748272381,
+        "factual": 56.23974369688922,
+        "arithmetic": 53.62119875744835,
+        "lang": 62.10888484102935,
+        "syntax": 44.89279103836541,
+        "negation": 51.8840962495182,
+        "entailment": 63.505479601183616,
+        "refusal": 52.67860364302987,
+        "control": 60.211126353160324
+      },
+      "pile_perplexity": 3625.227102521896,
+      "lambda_util": 0.1,
+      "alpha_jointz": 0.0,
+      "lora_rank": 64,
+      "n_steps": 3000,
+      "phi_heldout_r2": 0.3466023802757263,
+      "pre_train_joint_z": 57.10793446611671,
+      "train_loss_last100_mse": 0.2059702406823635,
+      "train_loss_last100_jz": 49.5991153717041,
+      "train_loss_last100_util": 8.228841004371644
+    },
+    "alpha_jz_0.1_lambda_util_0.0": {
+      "joint_z": 57.37843276878791,
+      "per_probe_max": 148.9120503174416,
+      "per_probe_median": 52.57690828705587,
+      "per_cat_mean_z": {
+        "ioi": 44.923882588749855,
+        "induction": 44.77075721167593,
+        "coref": 59.53006433027076,
+        "factual": 62.49838312429675,
+        "arithmetic": 74.08367029363687,
+        "lang": 71.4155707014,
+        "syntax": 46.7467427578859,
+        "negation": 53.69212931921925,
+        "entailment": 66.67423720876944,
+        "refusal": 53.78353096836949,
+        "control": 61.75408355851215
+      },
+      "pile_perplexity": 31887708.957386836,
+      "lambda_util": 0.0,
+      "alpha_jointz": 0.1,
+      "lora_rank": 64,
+      "n_steps": 3000,
+      "phi_heldout_r2": 0.1633915901184082,
+      "pre_train_joint_z": 57.368134746325325,
+      "train_loss_last100_mse": 0.3366220745444298,
+      "train_loss_last100_jz": 57.86145679473877,
+      "train_loss_last100_util": 0.0
+    },
+    "alpha_jz_0.1_lambda_util_0.1": {
+      "joint_z": 9.993063096005445,
+      "per_probe_max": 44.606863753140175,
+      "per_probe_median": 8.700274255183146,
+      "per_cat_mean_z": {
+        "ioi": 6.241589320464198,
+        "induction": 6.504201963968195,
+        "coref": 11.520202103320866,
+        "factual": 9.126823193935802,
+        "arithmetic": 16.934348266296354,
+        "lang": 10.497678501188114,
+        "syntax": 8.84525000916623,
+        "negation": 6.661160296989856,
+        "entailment": 12.294517652292255,
+        "refusal": 10.798183465376855,
+        "control": 15.429720417819212
+      },
+      "pile_perplexity": 1188.170803009675,
+      "lambda_util": 0.1,
+      "alpha_jointz": 0.1,
+      "lora_rank": 64,
+      "n_steps": 3000,
+      "phi_heldout_r2": 0.1633915901184082,
+      "pre_train_joint_z": 57.368134915106566,
+      "train_loss_last100_mse": 0.4666385567188263,
+      "train_loss_last100_jz": 10.603699507713317,
+      "train_loss_last100_util": 7.04626615524292
+    }
+  }
+}
