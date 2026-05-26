@@ -32,7 +32,7 @@ paper's application: the same trace is bound with a Merkle commit-open step to
 close the parallel-serve side channel.
 
 <p align="center">
-  <img src="paper_figures/per_class_attackability.png" width="78%" alt="Per-class attackability">
+  <img src="paper_figures/f1.png" width="78%" alt="SAE feature traces overview">
 </p>
 
 ---
@@ -60,24 +60,7 @@ public model and SAE releases through the scripts.
 | Commit-open closes the probe-after-return side channel | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json` |
 | Serving overhead | `results/e9_overhead.json` |
 
-<p align="center">
-  <img src="paper_figures/svip_vs_commit_open.png" width="62%" alt="SVIP versus commit-open comparison">
-</p>
-
----
-
-## Figures
-
-Selected paper figures are in [`paper_figures/`](paper_figures/):
-
-| Topic | Figure |
-| --- | --- |
-| Per-class attackability | [`per_class_attackability.png`](paper_figures/per_class_attackability.png) |
-| Adaptive LoRA profile | [`adaptive_lora_profile.png`](paper_figures/adaptive_lora_profile.png) |
-| SVIP vs commit-open | [`svip_vs_commit_open.png`](paper_figures/svip_vs_commit_open.png) |
-| Commit-open protocol | [`commit_open_protocol.png`](paper_figures/commit_open_protocol.png) |
-| Serving overhead | [`serving_overhead.png`](paper_figures/serving_overhead.png) |
-| Joint-probe sweep | [`joint_probe_sweep.png`](paper_figures/joint_probe_sweep.png) |
+Additional manuscript figures are available in [`paper_figures/`](paper_figures/).
 
 ---
 

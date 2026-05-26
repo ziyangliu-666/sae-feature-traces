@@ -35,6 +35,7 @@ claims without opening the PDF.
 
 | Figure asset | Paper role | Backing artifacts |
 | --- | --- | --- |
+| `paper_figures/f1.png` | Main reviewer-facing overview figure | `README.md`, manuscript figure build |
 | `paper_figures/commit_open_protocol.png` | Commit-open protocol overview | `scripts/05_b1_binding.py`, `results/b1_results.json` |
 | `paper_figures/svip_vs_commit_open.png` | Commit-open vs probe-after-return comparison | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json` |
 | `paper_figures/serving_overhead.png` | E9 wall-clock overhead | `modal/e9_overhead.py`, `results/e9_overhead.json` |
