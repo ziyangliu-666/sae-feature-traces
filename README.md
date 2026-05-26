@@ -32,7 +32,7 @@ paper's application: the same trace is bound with a Merkle commit-open step to
 close the parallel-serve side channel.
 
 <p align="center">
-  <img src="paper_figures/f1.png" width="78%" alt="SAE feature traces overview">
+  <img src="paper_figures/f1.png" width="50%" alt="SAE feature traces overview">
 </p>
 
 ---
