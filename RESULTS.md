@@ -1,188 +1,158 @@
 # Results
 
-This file is a one-page summary of the headline numbers behind every
-paper claim, read directly from the committed JSON logs in `results/`.
-For the script ↔ log mapping see [`ARTIFACTS.md`](ARTIFACTS.md); for
-re-running the analyses see [`README.md`](README.md).
+This page summarizes the numbers a reviewer is most likely to check first.
+For the exact claim -> script -> log mapping, see [`ARTIFACTS.md`](ARTIFACTS.md).
+For raw measurements, inspect `results/*.json`.
 
-All thresholds τ are set to the **99th-percentile of an honest-only
-pool** — equivalently, the false-positive rate at honest behavior is
-fixed at **1%** across every detection result below.
+Unless stated otherwise, thresholds are honest-pool 99th percentiles, so the
+nominal false-positive rate on honest behavior is 1%.
 
 ---
 
-## Detection summary
+## Main Claims
 
-| # | Setting | Attackers | Detected at FPR=1% | Median signal-over-τ |
-| --- | --- | --- | --- | --- |
-| E2 | Same-family substitutes, Qwen3-1.7B → Qwen3-0.6B | learned-linear + raw | all lifts cross τ | — |
-| E3 | Cross-family substitutes, Qwen3-1.7B target | 4 (Qwen2.5-1.5B, Phi-3.5-mini, OLMo-2-7B, Qwen3-0.6B) | **4 / 4** | **~68–104×** |
-| E13 | Cross-family substitutes, Gemma-2-2B target | 4 (Gemma-2-2B-it, Pythia-1.4B, Qwen2.5-1.5B, Phi-3.5-mini) | **4 / 4** | **~218–412×** |
-| E13-9B | Cross-family, Gemma-2-9B target | Qwen2.5-7B | detected | — |
-| E14 | Adaptive LoRA, Gemma-2-2B substitute trained to mimic target | 1 | detected, joint-z **205.6** vs τ ≈ 0.82 | — |
-| E16 | White-box joint-z LoRA attack, Qwen3-1.7B | λ\_util = 0 (utility-free) | joint-z **56.6** (detected, but ppl blows up) | — |
-| E16 | White-box joint-z LoRA attack, Qwen3-1.7B | λ\_util = 0.1 (utility-constrained) | joint-z **7.4** but pile-ppx unusable → **attack fails as a serving substitute** | — |
-| E11 | SVIP head-to-head, Qwen3-1.7B | 4 (same as E3 + cheap same-family) | **SVIP: 0 / 4**, ours: **4 / 4** | margin ~70× signal |
+| Paper claim | Reviewer artifact |
+| --- | --- |
+| The SAE trace uses a 96-probe named-circuit library over 11 categories. | `results/probe_library_qwen3_1.7b_L14_k96.json`, `results/e23_perhead_ablation.json` |
+| Probe-aware LoRA attackers show the paper's capacity-dependent per-class crossover, but the full-library joint score remains above threshold. | `results/e14_gemma_adaptive_lora.json`, `results/multiseed_rank_sweep.json`, `results/per_class_rank_matrix.json` |
+| Cross-family substitutes are separated on Qwen3-1.7B and Gemma-2-2B. | `results/e3_v2_scored.json`, `results/e13_gemma_scored.json` |
+| White-box and attention-only variants remain outside the accepted serving envelope. | `results/e16_whitebox_jointz_qwen3.json`, `results/e24_attn_only_qwen3_r64_attn_only_mse.json` |
+| Commit-open closes the parallel-serve gap left by probe-after-return baselines. | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json`, `paper_figures/svip_vs_commit_open.png` |
+| Serving overhead is small at production batch sizes. | `results/e9_overhead.json`, `paper_figures/serving_overhead.png` |
 
 ---
 
-## Cross-family detection (E3 — Qwen3-1.7B)
+## Capacity-Dependent Crossover
 
-Threshold τ = honest joint-Mahalanobis at the 99th percentile (≈ 0.82).
-Source: `results/e3_v2_scored.json`.
+Source: `results/multiseed_rank_sweep.json`.
 
-| Attacker | linear fit R² (heldout) | joint-Mahalanobis | detected (FPR=1%) |
+| LoRA rank | Mean joint-z | Min joint-z | Max joint-z |
+| ---: | ---: | ---: | ---: |
+| 32 | 5.61 | 3.74 | 8.38 |
+| 64 | 5.37 | 3.87 | 8.03 |
+| 128 | 6.09 | 4.54 | 8.72 |
+| 256 | 18.02 | 5.42 | 38.60 |
+
+The manuscript's per-class figures show the qualitative inversion: at lower
+rank, attention-pattern classes such as induction, IOI, and coreference are
+most attackable; at higher rank, surface classes such as factual recall,
+syntax, and language become easier to imitate while induction recovers.
+
+For visual inspection, see:
+
+- `paper_figures/adaptive_lora_profile.png`
+- `paper_figures/per_class_attackability.png`
+- `paper_figures/joint_probe_sweep.png`
+
+---
+
+## Cross-Family Detection
+
+### Qwen3-1.7B Target
+
+Source: `results/e3_v2_scored.json`. Threshold τ is the honest
+joint-Mahalanobis 99th percentile, approximately 0.82 in this scoring run.
+
+| Attacker | Held-out linear-fit R2 | Joint score | Detected |
 | --- | ---: | ---: | :---: |
-| Qwen/Qwen2.5-1.5B | 0.39 | 55.95 | ✓ |
-| microsoft/Phi-3.5-mini-instruct | −0.90 | 56.38 | ✓ |
-| allenai/OLMo-2-1124-7B | −5.97 | 85.45 | ✓ |
-| Qwen/Qwen3-0.6B | 0.15 | 57.38 | ✓ |
+| Qwen/Qwen2.5-1.5B | 0.39 | 55.95 | yes |
+| microsoft/Phi-3.5-mini-instruct | -0.90 | 56.38 | yes |
+| allenai/OLMo-2-1124-7B | -5.97 | 85.45 | yes |
+| Qwen/Qwen3-0.6B | 0.15 | 57.38 | yes |
 
-Honest median joint-Mahalanobis ≈ 0.80, so every attacker is at least
-**~68×** over the honest distribution and the smallest detection margin
-is **~68× τ**.
+All four tested substitutes clear threshold by a large margin.
 
----
+### Gemma-2-2B Target
 
-## Cross-family detection (E13 — Gemma-2-2B)
-
-Same threshold framework, Gemma-2-2B target.
 Source: `results/e13_gemma_scored.json`.
 
-| Attacker | ratio over τ | detected (FPR=1%) |
+| Attacker | Ratio over τ | Detected |
 | --- | ---: | :---: |
-| google/gemma-2-2b-it | 217.9× | ✓ |
-| EleutherAI/pythia-1.4b | 316.9× | ✓ |
-| Qwen/Qwen2.5-1.5B | 411.6× | ✓ |
-| microsoft/Phi-3.5-mini-instruct | 328.3× | ✓ |
+| google/gemma-2-2b-it | 217.9x | yes |
+| EleutherAI/pythia-1.4b | 316.9x | yes |
+| Qwen/Qwen2.5-1.5B | 411.6x | yes |
+| microsoft/Phi-3.5-mini-instruct | 328.3x | yes |
 
-All four attackers detected; the smallest margin is ~218×.
-
----
-
-## SVIP head-to-head (E11)
-
-Source: `results/e11_svip_vs_ours.json`.
-SVIP and our commit-open trace are scored against the **same threshold**.
-
-| Attacker | SVIP joint-z | Ours joint-z | SVIP detected | Ours detected |
-| --- | ---: | ---: | :---: | :---: |
-| Cheap same-family (Qwen3-0.6B, LEARNED_LIN lift) | 0.798 | 56.68 | ✗ | ✓ |
-| Cross-family (Qwen2.5-1.5B) | 0.798 | 55.95 | ✗ | ✓ |
-| Cross-family (Phi-3.5-mini) | 0.798 | 56.38 | ✗ | ✓ |
-| Cross-family (OLMo-2-7B) | 0.798 | 85.45 | ✗ | ✓ |
-
-SVIP collapses to the honest median (0.798) for every attacker — it
-**cannot distinguish honest from substitute serving** at FPR=1% — while
-our trace clears the threshold by a factor of ~70.
+The Gemma-2-2B replication uses the same probe-library -> calibration ->
+joint-scoring pipeline rather than a backbone-specific detector.
 
 ---
 
-## Adaptive-LoRA attack (E14 — Gemma-2-2B)
-
-Source: `results/e14_gemma_adaptive_lora.json`.
-
-A rank-64 LoRA is trained for 1500 steps on Gemma-2-2B-it specifically to
-match Gemma-2-2B target activations on the probe set (`q,k,v,o,gate,up,down`
-projections). Even with this targeted adversary:
-
-- baseline `phi_only` joint-z (no LoRA) = **205.6** vs τ ≈ 0.82 → still
-  ~**250×** over threshold
-- per-category detection lifts up to **432.8** (IOI), **350.0** (coref),
-  **328.0** (entailment).
-
-The adaptive substitute remains trivially separable.
-
----
-
-## White-box joint-z LoRA (E16 — Qwen3-1.7B)
+## White-Box and Attention-Only Stress Tests
 
 Source: `results/e16_whitebox_jointz_qwen3.json`.
 
-A white-box attacker directly minimizes joint-z on the probe library
-while LoRA-finetuning a substitute (Qwen3-0.6B). Two regimes:
+| Setting | Joint-z | Utility signal |
+| --- | ---: | --- |
+| White-box LoRA, lambda_util = 0.0 | 56.55 | pile perplexity approximately 1.0e10, unusable as a serving substitute |
+| White-box LoRA, lambda_util = 0.1 | 7.40 | pile perplexity 243.24, still above threshold |
 
-| λ\_util | joint-z | held-out probe R² | pile perplexity |
-| ---: | ---: | ---: | ---: |
-| 0.0  (no utility constraint) | **56.55** | 0.137 | 1.0 × 10¹⁰ (unusable) |
-| 0.1  (utility-constrained)   | **7.40**  | 0.039 | small but probes still over τ |
+Source: `results/e24_attn_only_qwen3_r64_attn_only_mse.json`.
 
-The white-box attacker can either (a) push joint-z below τ at the cost
-of catastrophic perplexity blow-up (the model can no longer serve), or
-(b) keep utility and still fail to evade detection. **There is no
-operating point where both serving quality and stealth are achievable.**
-
-Multi-seed rank sweep (`results/multiseed_rank_sweep.json`) confirms the
-attacker's joint-z stays well above τ across LoRA ranks {32, 64, 128, 256}
-and seeds — mean joint-z range **5.4 – 18.0**, max **38.6**.
+The attention-only rank-64 LoRA stress test remains above the Qwen3 threshold
+while exposing which circuit categories are most vulnerable under a restricted
+attacker parameterization.
 
 ---
 
-## Calibration and threshold stability
+## Commit-Open vs Probe-After-Return
 
-Source: `results/calibration_bootstrap.json` (n=10,000 bootstrap).
+The paper's application result is about timing: the same trace score is useful
+only if the provider commits before the verifier asks what to open. A
+probe-after-return baseline can be bypassed by parallel serving: route normal
+users to a substitute and route verifier probes to the advertised model.
 
-- Empirical τ at the 99th percentile: **1.12**
-- Gaussian-fit τ (10k bootstrap, 95% CI): **1.37**, CI [1.14, 1.50]
-- Student-t(5) fit τ: **1.44**, CI [1.11, 1.82]
-- Within-session correlation matrix: positions are correlated **0.80 – 0.96**.
+Committed reviewer artifacts:
 
-The empirical threshold is robust to parametric assumptions; the Student-t
-CI upper bound (~1.82) is conservative and all reported attacker
-signals remain well above it.
+| Artifact | Scope |
+| --- | --- |
+| `results/e11_svip_vs_ours.json` | Qwen3 core comparison; 4 matched attackers |
+| `results/recipe3_svip_two_backbone.json` | Qwen3 + Gemma-2-2B comparison; 11 matched attackers |
+| `paper_figures/svip_vs_commit_open.png` | Manuscript figure for the full matched comparison |
 
----
-
-## Multi-backbone replication
-
-| Backbone | SAE | Layer | Honest-pool τ source |
-| --- | --- | ---: | --- |
-| Qwen3-1.7B | mwhanna-qwen3-1.7b-transcoders-lowl0 | 14 | `recipe1_qwen3_honest_pool_multikernel.json` (τ\_recipe1 = 1.13) |
-| Gemma-2-2B | gemma-scope-2b-pt-res-canonical | 12 | `recipe1_gemma2_honest_pool_v2.json` |
-| Gemma-2-9B | gemma-scope-9b-pt-res-canonical | 20 | `recipe1_gemma2_9b_honest_pool.json` |
-
-The same pipeline (probe library → cross-backend σ-calibration → joint
-scoring) carries over to both Gemma-2 backbones with no methodology
-change; thresholds and detection margins replicate.
+Across the committed JSON comparisons, SVIP-style probe-after-return misses
+every matched parallel-serve attacker and commit-open detects every matched
+attacker. The manuscript figure extends this matched comparison to the full
+15-attacker set reported in the paper.
 
 ---
 
-## Serving overhead (E9 — Qwen3-1.7B)
+## Serving Overhead
 
-Source: `results/e9_overhead.json`. Measured wall-time on Qwen3-1.7B,
-sequence length 128, top-k = 32, A10G GPU.
+Source: `results/e9_overhead.json`. Measured on Qwen3-1.7B, sequence length
+128, top-k = 32, A10G GPU.
 
-| Batch | Forward only (A) | Forward + SAE (B) | Full commit (C) | C / A | Payload |
+| Batch | Forward only | Forward + SAE | Full commit | Full / forward | Payload / request |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1  | 35.1 ms | 42.2 ms | 41.6 ms | **1.18×** | 224 B |
-| 4  | 48.6 ms | 53.0 ms | 53.6 ms | **1.10×** | 896 B |
-| 16 | 170.5 ms | 175.5 ms | 176.2 ms | **1.03×** | 3.6 KB |
-| 32 | 369.3 ms | 375.7 ms | 377.2 ms | **1.02×** | 7.2 KB |
+| 1 | 35.1 ms | 42.2 ms | 41.6 ms | 1.185x | 224 B |
+| 4 | 48.6 ms | 53.0 ms | 53.6 ms | 1.102x | 224 B |
+| 16 | 170.5 ms | 175.5 ms | 176.2 ms | 1.034x | 224 B |
+| 32 | 369.3 ms | 375.7 ms | 377.2 ms | 1.021x | 224 B |
 
-The full commit-open trace adds **≤4%** wall-time at production batch
-sizes and **~7 KB per request** of verifiable payload.
-
----
-
-## Top-k sensitivity (E5 / ksweep)
-
-Source: `results/ksweep_results.json`.
-
-| top-k | honest p99 | attacker joint-z | per-probe max |
-| ---: | ---: | ---: | ---: |
-| 4  | 1.85 |  9.23 | 68.1 |
-| 8  | 1.86 |  9.13 | 46.6 |
-| 16 | 1.88 |  *(see log)* | *(see log)* |
-| 32 | 1.51 |  *(headline)* | — |
-
-The detection margin is robust to top-k between 4 and 32; the paper
-reports top-k = 32 as the primary operating point.
+The production-batch headline is batch 32: full commit-open tracing adds about
+2.1% wall-clock overhead with a 224-byte per-request payload.
 
 ---
 
-## Where to look next
+## Threshold and Calibration Checks
 
-- `RESULTS.md` (this file) — headline numbers.
-- [`ARTIFACTS.md`](ARTIFACTS.md) — full claim → script → log map.
-- [`README.md`](README.md) — quickstart and environment.
-- `results/*.json` — raw numbers behind every table above.
+Source: `results/calibration_bootstrap.json`.
+
+- Empirical τ at the 99th percentile: 1.12.
+- Gaussian-fit τ, 10k bootstrap: 1.37 with 95% CI [1.14, 1.50].
+- Student-t(5) τ: 1.44 with 95% CI [1.11, 1.82].
+- Within-session position correlations are high, so the paper uses
+  honest-pool calibration rather than assuming independent positions.
+
+These thresholds remain far below the cross-family and most adversarial
+substitute scores reported above.
+
+---
+
+## Where to Look Next
+
+- [`ARTIFACTS.md`](ARTIFACTS.md) is the authoritative map from paper claims to
+  scripts and logs.
+- [`README.md`](README.md) gives the reviewer-oriented quickstart.
+- `results/*.json` contains the raw numbers behind the summaries.
+- `paper_figures/` mirrors selected manuscript figures for visual inspection.

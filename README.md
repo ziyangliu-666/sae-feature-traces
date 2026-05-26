@@ -1,77 +1,90 @@
 <div align="center">
 
-# Committed SAE Feature Traces
+# Which Circuits Define a Language Model?
 
-**Sparse-autoencoder feature traces for verifying hosted language models.**
-*Anonymized artifact — EMNLP 2026 submission.*
+**Capacity-Dependent Crossover in SAE Feature Traces**
 
-[![EMNLP 2026](https://img.shields.io/badge/EMNLP_2026-Anonymous_Submission-1f6feb)](https://2026.emnlp.org)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.6-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org)
-[![Modal](https://img.shields.io/badge/Modal-GPU_backend-7b3fe4)](https://modal.com)
-[![SAE Lens](https://img.shields.io/badge/SAE_Lens-6.39-2ea44f)]()
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97_Hugging_Face-models-yellow)](https://huggingface.co)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Status](https://img.shields.io/badge/status-reproducible-success)]()
-[![Review](https://img.shields.io/badge/double--blind-anonymized-lightgrey)]()
+Anonymous EMNLP 2026 artifact for the paper's SAE-circuit trace experiments,
+capacity-dependent attackability analysis, and commit-open hosted-LLM
+verification application.
 
-[![Scripts](https://img.shields.io/badge/scripts-27-blue)]()
-[![Modal entrypoints](https://img.shields.io/badge/modal-24-blueviolet)]()
-[![Result logs](https://img.shields.io/badge/results-78_JSON-informational)]()
-[![Backbones](https://img.shields.io/badge/backbones-Qwen3_%C2%B7_Gemma--2--2B_%C2%B7_Gemma--2--9B-orange)]()
+This repository contains the code, configuration, result logs, and manuscript
+figures needed to audit the paper's main empirical claims.
 
 </div>
 
 ---
 
-## TL;DR
+## Reviewer Guide
 
-- A **probe-library** of SAE features, plus calibration and scoring code, lets
-  a verifier check that a hosted LLM is actually serving the model it claims.
-- All paper experiments — same-family, cross-family, adaptive LoRA, white-box,
-  SVIP comparison, multi-backbone replication — are reproducible from the
-  checked-in JSON logs without re-running GPUs.
-- The full claim → script → log map is in **[`ARTIFACTS.md`](ARTIFACTS.md)**;
-  headline numbers from each experiment are summarized in **[`RESULTS.md`](RESULTS.md)**.
+If you are reviewing the paper, start here:
 
----
+| What to check | Where |
+| --- | --- |
+| Claim-to-artifact mapping | [`ARTIFACTS.md`](ARTIFACTS.md) |
+| Headline numbers and thresholds | [`RESULTS.md`](RESULTS.md) |
+| CPU-only table regeneration | `scripts/09_e3_score.py`, `scripts/14_calibration_bootstrap.py`, `scripts/15_e11_svip_analysis.py`, `scripts/18_ksweep_posthoc.py`, `scripts/22_covariate_analysis.py` |
+| GPU reruns | `modal/*.py` |
+| Raw committed measurements | `results/*.json` |
+| Manuscript figures for orientation | [`paper_figures/`](paper_figures/) |
 
-## Results at a glance
-
-All numbers are read directly from the committed JSON logs.
-
-| Experiment | Backbone | Result | Source |
-| --- | --- | --- | --- |
-| Cross-family detection (E3) | Qwen3-1.7B | **4 / 4** attackers detected at FPR=1%; joint-Mahalanobis ratio **68–104× τ** | `results/e3_v2_scored.json` |
-| Cross-family detection (E13) | Gemma-2-2B | **4 / 4** detected; ratio **218–412× τ** | `results/e13_gemma_scored.json` |
-| Adaptive-LoRA attack (E14) | Gemma-2-2B | substitute trained to mimic target → still detected, joint-z = **205.6** vs τ ≈ 0.82 | `results/e14_gemma_adaptive_lora.json` |
-| White-box joint-z LoRA (E16) | Qwen3-1.7B | unconstrained attacker (λ\_util=0) → joint-z **56.6**; with utility constraint (λ\_util=0.1) → ppl-blowup; **constrained attack fails** | `results/e16_whitebox_jointz_qwen3.json` |
-| SVIP head-to-head (E11) | Qwen3-1.7B | SVIP **does not detect** any of 4 attackers at FPR=1%; ours detects all (margin **~70× signal**) | `results/e11_svip_vs_ours.json` |
-| Serving overhead (E9) | Qwen3-1.7B | batch=16 → **+2.9%** wall-time, **3.6 KB** commit payload; batch=32 → **+1.8%**, 7.2 KB | `results/e9_overhead.json` |
-
-τ here is the honest-pool 99th-percentile threshold (FPR=1%) used uniformly
-across attackers; see RESULTS.md for the per-experiment definitions.
+The artifact is intentionally anonymous. Large model weights, SAE checkpoints,
+Hugging Face caches, and Modal volumes are not checked in; GPU reruns download
+public model and SAE releases through the scripts.
 
 ---
 
-## Highlights
+## Paper Thesis
 
-- **End-to-end pipeline** — probe extraction → cross-backend calibration →
-  scoring → bootstrap and sensitivity analyses.
-- **Multi-backbone replication** — same pipeline, three open-weight
-  backbones (Qwen3-1.7B, Gemma-2-2B, Gemma-2-9B).
-- **Adversarial stress tests** — adaptive LoRA, white-box joint-z LoRA,
-  attention-only LoRA, per-head ablation, circuit ablation.
-- **Head-to-head baseline** — SVIP comparison included as a first-class
-  experiment, not an afterthought.
-- **Offline-verifiable** — every paper table is reproducible from the
-  committed JSON logs without re-running GPUs.
+The paper asks which internal computations make a language model hard to
+impersonate, and whether the answer changes with attacker capacity. It builds a
+per-position sparse-autoencoder (SAE) circuit trace over a 96-probe
+named-circuit library spanning 11 categories.
+
+The core empirical result is a capacity-dependent inversion: low-rank
+probe-aware LoRA attackers first erode attention-pattern circuits such as
+induction, IOI, and coreference, while high-rank attackers shift pressure
+toward surface circuits such as factual recall, syntax, and language. The full
+96-probe joint score remains above the honest threshold across tested
+substitutes and attacker regimes. The hosted-LLM verification protocol is the
+paper's application: the same trace is bound with a Merkle commit-open step to
+close the parallel-serve side channel.
+
+<p align="center">
+  <img src="paper_figures/adaptive_lora_profile.png" width="48%" alt="Adaptive LoRA per-class profile">
+  <img src="paper_figures/per_class_attackability.png" width="48%" alt="Per-class attackability">
+</p>
 
 ---
 
-## Quickstart
+## Results at a Glance
 
-### CPU-only — recompute paper tables from committed logs
+All numeric claims below are tied to committed JSON logs or manuscript figures.
+See [`ARTIFACTS.md`](ARTIFACTS.md) for the exact script and log mapping.
+
+| Claim | Evidence |
+| --- | --- |
+| Per-class attackability has a capacity-dependent crossover: attention-pattern circuits collapse first at low rank, while surface circuits become more attackable at high rank. | `results/per_class_rank_matrix.json`, `results/e14_gemma_adaptive_lora.json`, `paper_figures/adaptive_lora_profile.png`, `paper_figures/per_class_attackability.png` |
+| Same-family, cross-family, adaptive, white-box, attention-only, and ablation attackers remain detectable under the joint SAE trace score. | `results/e3_v2_scored.json`, `results/e13_gemma_scored.json`, `results/e16_whitebox_jointz_qwen3.json`, `results/e24_attn_only_qwen3_r64_attn_only_mse.json`, `results/multiseed_rank_sweep.json` |
+| Detection is robust to probe-count and top-k sweeps. | `results/e5_v2_joint_n_sweep.json`, `results/ksweep_results.json`, `paper_figures/joint_probe_sweep.png` |
+| The SVIP-style probe-after-return baseline misses matched parallel-serve attackers, while commit-open detects them. | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json`, `paper_figures/svip_vs_commit_open.png` |
+| Serving overhead is small at production batch sizes. | `results/e9_overhead.json`, `paper_figures/serving_overhead.png` |
+
+<p align="center">
+  <img src="paper_figures/joint_probe_sweep.png" width="48%" alt="Joint-probe count sweep">
+  <img src="paper_figures/commit_open_protocol.png" width="48%" alt="Commit-open protocol overview">
+</p>
+
+<p align="center">
+  <img src="paper_figures/svip_vs_commit_open.png" width="48%" alt="SVIP versus commit-open comparison">
+  <img src="paper_figures/serving_overhead.png" width="48%" alt="Serving overhead">
+</p>
+
+---
+
+## Reproducing Tables from Committed Logs
+
+The quickest reviewer path is CPU-only and reads the checked-in JSON logs:
 
 ```bash
 python -m venv .venv
@@ -85,7 +98,15 @@ python scripts/18_ksweep_posthoc.py
 python scripts/22_covariate_analysis.py
 ```
 
-### GPU — re-run experiments on Modal
+These commands do not require downloading model weights. They recompute summary
+statistics and tables from files already committed under `results/`.
+
+---
+
+## GPU Reruns
+
+GPU experiments are implemented as Modal entrypoints. They require access to the
+public backbone and SAE releases used by the paper.
 
 ```bash
 modal secret create huggingface-secret HF_TOKEN=...
@@ -94,58 +115,28 @@ modal run modal/e3_cross_family.py
 modal run modal/e12_gemma_pilot.py
 ```
 
-Hugging Face access to the public Qwen3, Gemma-2, and corresponding SAE
-releases is required for the GPU paths.
+Backbone, layer, SAE release, top-k, and kernel choices are centralized in
+[`config.py`](config.py). The repository does not claim to host model weights or
+datasets itself.
 
 ---
 
-## Repository layout
+## Repository Layout
 
 ```text
-sae-feature-traces-anon/
+.
 ├── README.md
-├── ARTIFACTS.md                 paper claims → scripts → logs
-├── RESULTS.md                   headline numbers from every experiment
-├── LICENSE                      MIT (anonymized)
-├── requirements.txt
+├── ARTIFACTS.md                 paper claims -> scripts -> logs
+├── RESULTS.md                   reviewer-facing numeric summary
 ├── config.py                    backbone / SAE / kernel configuration
-├── scripts/                     27 pilot + post-hoc scripts (numbered 00–22 + e18/e19)
-├── modal/                       24 Modal GPU entrypoints
-└── results/                     78 result JSONs + 4 summary .txt files
+├── scripts/                     CPU and post-hoc analysis scripts
+├── modal/                       GPU experiment entrypoints
+├── results/                     committed JSON and text result logs
+└── paper_figures/               selected manuscript figures
 ```
 
-Naming convention: numbered `0X_*` scripts follow the order of the paper;
-`eXX_*` scripts are appendix / stress tests. `ARTIFACTS.md` is the
-authoritative claim-to-script mapping.
-
----
-
-## Reproducing the paper
-
-| Paper item | Script | Result log |
-| --- | --- | --- |
-| Probe library | `scripts/01_extract_probes.py` | `results/probe_library_qwen3_1.7b_L14_k96.json` |
-| Cross-backend calibration | `scripts/07_e7_cross_backend_calibration.py` | `results/sigma_calibration_qwen3_1.7b_L14.json` |
-| Same-family lifts (E2) | `scripts/08_e2_same_family_separability.py` | `results/e2_separability.json` |
-| Cross-family substitutes (E3) | `scripts/09_e3_score.py`, `scripts/11_e3_v2_score.py` | `results/e3_cross_family_scored.json` |
-| SVIP comparison (E11) | `scripts/15_e11_svip_analysis.py` | `results/e11_svip_vs_ours.json` |
-
-The full claim → script → log map (Qwen3 core pipeline, hosted-LLM
-verification, Gemma-2 / Gemma-2-9B replication, white-box and ablations)
-lives in **[`ARTIFACTS.md`](ARTIFACTS.md)**.
-
----
-
-## Environment
-
-- **Python**: 3.10+
-- **CPU path**: only the requirements in `requirements.txt`.
-- **GPU path**: Modal with a secret named `huggingface-secret`
-  exposing `HF_TOKEN` for gated model access. Pinned versions: PyTorch
-  2.6, `transformers` 4.56.2, `sae_lens` 6.39.0, `datasets` 3.1.0,
-  `peft`, `scikit-learn`, `scipy`, `zstandard`.
-- Backbone, SAE release, and kernel choices are centralized in
-  `config.py` at the repo root.
+Numbered scripts follow the order of the paper where possible. `eXX_*` scripts
+cover appendix experiments, stress tests, and additional adversarial settings.
 
 ---
 
@@ -153,7 +144,7 @@ lives in **[`ARTIFACTS.md`](ARTIFACTS.md)**.
 
 ```bibtex
 @inproceedings{anonymous2026saetraces,
-  title     = {Committed SAE Feature Traces for Hosted LLM Verification},
+  title     = {Which Circuits Define a Language Model? Capacity-Dependent Crossover in SAE Feature Traces},
   author    = {Anonymous},
   booktitle = {Proceedings of EMNLP 2026},
   year      = {2026},
@@ -161,13 +152,9 @@ lives in **[`ARTIFACTS.md`](ARTIFACTS.md)**.
 }
 ```
 
----
+## License and Anonymity
 
-## License and anonymity
-
-Released under the [MIT License](LICENSE) for double-blind review. Author
-identities, institution affiliations, and identifying repository metadata
-have been removed. Large model weights, Hugging Face caches, Modal
-volumes, and local virtual environments are intentionally excluded —
-every checked-in file is either source code, configuration, or a result
-log used to produce the paper tables.
+The code is released under the [MIT License](LICENSE) for double-blind review.
+Author identities, institution affiliations, private infrastructure details,
+large model weights, local caches, Modal volumes, and virtual environments are
+excluded intentionally.
