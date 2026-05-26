@@ -8,33 +8,14 @@ Anonymous EMNLP 2026 artifact for the paper's SAE-circuit trace experiments,
 capacity-dependent attackability analysis, and commit-open hosted-LLM
 verification application.
 
-This repository contains the code, configuration, result logs, and manuscript
-figures needed to audit the paper's main empirical claims.
+Code, result logs, and selected manuscript figures for auditing the paper's
+main empirical claims.
 
 </div>
 
 ---
 
-## Reviewer Guide
-
-If you are reviewing the paper, start here:
-
-| What to check | Where |
-| --- | --- |
-| Claim-to-artifact mapping | [`ARTIFACTS.md`](ARTIFACTS.md) |
-| Headline numbers and thresholds | [`RESULTS.md`](RESULTS.md) |
-| CPU-only table regeneration | `scripts/09_e3_score.py`, `scripts/14_calibration_bootstrap.py`, `scripts/15_e11_svip_analysis.py`, `scripts/18_ksweep_posthoc.py`, `scripts/22_covariate_analysis.py` |
-| GPU reruns | `modal/*.py` |
-| Raw committed measurements | `results/*.json` |
-| Manuscript figures for orientation | [`paper_figures/`](paper_figures/) |
-
-The artifact is intentionally anonymous. Large model weights, SAE checkpoints,
-Hugging Face caches, and Modal volumes are not checked in; GPU reruns download
-public model and SAE releases through the scripts.
-
----
-
-## Paper Thesis
+## At a Glance
 
 The paper asks which internal computations make a language model hard to
 impersonate, and whether the answer changes with attacker capacity. It builds a
@@ -51,38 +32,56 @@ paper's application: the same trace is bound with a Merkle commit-open step to
 close the parallel-serve side channel.
 
 <p align="center">
-  <img src="paper_figures/adaptive_lora_profile.png" width="48%" alt="Adaptive LoRA per-class profile">
-  <img src="paper_figures/per_class_attackability.png" width="48%" alt="Per-class attackability">
+  <img src="paper_figures/per_class_attackability.png" width="78%" alt="Per-class attackability">
 </p>
 
 ---
 
-## Results at a Glance
+## Reviewer Checklist
 
-All numeric claims below are tied to committed JSON logs or manuscript figures.
-See [`ARTIFACTS.md`](ARTIFACTS.md) for the exact script and log mapping.
+- Start with [`ARTIFACTS.md`](ARTIFACTS.md) for the paper claim -> script -> log map.
+- Use [`RESULTS.md`](RESULTS.md) for headline thresholds and numeric summaries.
+- Inspect `results/*.json` for raw committed measurements.
+- Recompute CPU-only summaries with the commands below; no model weights are needed.
+
+The artifact is intentionally anonymous. Large model weights, SAE checkpoints,
+Hugging Face caches, and Modal volumes are not checked in; GPU reruns download
+public model and SAE releases through the scripts.
+
+---
+
+## Claim Map
 
 | Claim | Evidence |
 | --- | --- |
-| Per-class attackability has a capacity-dependent crossover: attention-pattern circuits collapse first at low rank, while surface circuits become more attackable at high rank. | `results/per_class_rank_matrix.json`, `results/e14_gemma_adaptive_lora.json`, `paper_figures/adaptive_lora_profile.png`, `paper_figures/per_class_attackability.png` |
-| Same-family, cross-family, adaptive, white-box, attention-only, and ablation attackers remain detectable under the joint SAE trace score. | `results/e3_v2_scored.json`, `results/e13_gemma_scored.json`, `results/e16_whitebox_jointz_qwen3.json`, `results/e24_attn_only_qwen3_r64_attn_only_mse.json`, `results/multiseed_rank_sweep.json` |
-| Detection is robust to probe-count and top-k sweeps. | `results/e5_v2_joint_n_sweep.json`, `results/ksweep_results.json`, `paper_figures/joint_probe_sweep.png` |
-| The SVIP-style probe-after-return baseline misses matched parallel-serve attackers, while commit-open detects them. | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json`, `paper_figures/svip_vs_commit_open.png` |
-| Serving overhead is small at production batch sizes. | `results/e9_overhead.json`, `paper_figures/serving_overhead.png` |
+| Capacity-dependent circuit crossover | `results/per_class_rank_matrix.json`, `results/e14_gemma_adaptive_lora.json` |
+| Joint trace rejects tested substitutes and LoRA variants | `results/e3_v2_scored.json`, `results/e13_gemma_scored.json`, `results/multiseed_rank_sweep.json`, `results/e16_whitebox_jointz_qwen3.json`, `results/e24_attn_only_qwen3_r64_attn_only_mse.json` |
+| Probe-count and top-k sensitivity | `results/e5_v2_joint_n_sweep.json`, `results/ksweep_results.json` |
+| Commit-open closes the probe-after-return side channel | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json` |
+| Serving overhead | `results/e9_overhead.json` |
 
 <p align="center">
-  <img src="paper_figures/joint_probe_sweep.png" width="48%" alt="Joint-probe count sweep">
-  <img src="paper_figures/commit_open_protocol.png" width="48%" alt="Commit-open protocol overview">
-</p>
-
-<p align="center">
-  <img src="paper_figures/svip_vs_commit_open.png" width="48%" alt="SVIP versus commit-open comparison">
-  <img src="paper_figures/serving_overhead.png" width="48%" alt="Serving overhead">
+  <img src="paper_figures/svip_vs_commit_open.png" width="62%" alt="SVIP versus commit-open comparison">
 </p>
 
 ---
 
-## Reproducing Tables from Committed Logs
+## Figures
+
+Selected paper figures are in [`paper_figures/`](paper_figures/):
+
+| Topic | Figure |
+| --- | --- |
+| Per-class attackability | [`per_class_attackability.png`](paper_figures/per_class_attackability.png) |
+| Adaptive LoRA profile | [`adaptive_lora_profile.png`](paper_figures/adaptive_lora_profile.png) |
+| SVIP vs commit-open | [`svip_vs_commit_open.png`](paper_figures/svip_vs_commit_open.png) |
+| Commit-open protocol | [`commit_open_protocol.png`](paper_figures/commit_open_protocol.png) |
+| Serving overhead | [`serving_overhead.png`](paper_figures/serving_overhead.png) |
+| Joint-probe sweep | [`joint_probe_sweep.png`](paper_figures/joint_probe_sweep.png) |
+
+---
+
+## CPU Reproduction
 
 The quickest reviewer path is CPU-only and reads the checked-in JSON logs:
 
