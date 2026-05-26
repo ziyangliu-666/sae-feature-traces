@@ -28,20 +28,11 @@ tables; the Modal scripts are included for GPU-backed reruns.
 | Serving overhead (E9) | `modal/e9_overhead.py` | `results/e9_overhead.json` |
 | SVIP comparison (E11 / Recipe 3) | `scripts/15_e11_svip_analysis.py`, `scripts/18_svip_two_backbone.py` | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json` |
 
-## Manuscript Figures
-
-These PNGs are copied from the paper build so reviewers can inspect the visual
-claims without opening the PDF.
+## README Figure
 
 | Figure asset | Paper role | Backing artifacts |
 | --- | --- | --- |
 | `paper_figures/f1.png` | Main reviewer-facing overview figure | `README.md`, manuscript figure build |
-| `paper_figures/commit_open_protocol.png` | Commit-open protocol overview | `scripts/05_b1_binding.py`, `results/b1_results.json` |
-| `paper_figures/svip_vs_commit_open.png` | Commit-open vs probe-after-return comparison | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json` |
-| `paper_figures/serving_overhead.png` | E9 wall-clock overhead | `modal/e9_overhead.py`, `results/e9_overhead.json` |
-| `paper_figures/adaptive_lora_profile.png` | Per-class adaptive-LoRA profile | `results/e14_gemma_adaptive_lora.json`, `results/per_class_rank_matrix.json` |
-| `paper_figures/per_class_attackability.png` | Per-class attackability diagnostic | `results/e14_gemma_adaptive_lora.json`, `results/per_class_rank_matrix.json` |
-| `paper_figures/joint_probe_sweep.png` | Joint-probe count sweep | `scripts/13_e5_joint_n_sweep.py`, `results/e5_v2_joint_n_sweep.json` |
 
 ## Multi-Backbone Replication
 

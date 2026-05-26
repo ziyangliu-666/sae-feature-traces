@@ -17,8 +17,8 @@ nominal false-positive rate on honest behavior is 1%.
 | Probe-aware LoRA attackers show the paper's capacity-dependent per-class crossover, but the full-library joint score remains above threshold. | `results/e14_gemma_adaptive_lora.json`, `results/multiseed_rank_sweep.json`, `results/per_class_rank_matrix.json` |
 | Cross-family substitutes are separated on Qwen3-1.7B and Gemma-2-2B. | `results/e3_v2_scored.json`, `results/e13_gemma_scored.json` |
 | White-box and attention-only variants remain outside the accepted serving envelope. | `results/e16_whitebox_jointz_qwen3.json`, `results/e24_attn_only_qwen3_r64_attn_only_mse.json` |
-| Commit-open closes the parallel-serve gap left by probe-after-return baselines. | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json`, `paper_figures/svip_vs_commit_open.png` |
-| Serving overhead is small at production batch sizes. | `results/e9_overhead.json`, `paper_figures/serving_overhead.png` |
+| Commit-open closes the parallel-serve gap left by probe-after-return baselines. | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json` |
+| Serving overhead is small at production batch sizes. | `results/e9_overhead.json` |
 
 ---
 
@@ -38,11 +38,7 @@ rank, attention-pattern classes such as induction, IOI, and coreference are
 most attackable; at higher rank, surface classes such as factual recall,
 syntax, and language become easier to imitate while induction recovers.
 
-For visual inspection, see:
-
-- `paper_figures/adaptive_lora_profile.png`
-- `paper_figures/per_class_attackability.png`
-- `paper_figures/joint_probe_sweep.png`
+The overview figure used in the README is `paper_figures/f1.png`.
 
 ---
 
@@ -108,7 +104,7 @@ Committed reviewer artifacts:
 | --- | --- |
 | `results/e11_svip_vs_ours.json` | Qwen3 core comparison; 4 matched attackers |
 | `results/recipe3_svip_two_backbone.json` | Qwen3 + Gemma-2-2B comparison; 11 matched attackers |
-| `paper_figures/svip_vs_commit_open.png` | Manuscript figure for the full matched comparison |
+| `paper_figures/f1.png` | README overview figure |
 
 Across the committed JSON comparisons, SVIP-style probe-after-return misses
 every matched parallel-serve attacker and commit-open detects every matched
@@ -155,4 +151,4 @@ substitute scores reported above.
   scripts and logs.
 - [`README.md`](README.md) gives the reviewer-oriented quickstart.
 - `results/*.json` contains the raw numbers behind the summaries.
-- `paper_figures/` mirrors selected manuscript figures for visual inspection.
+- `paper_figures/f1.png` is the single overview figure used by the README.

@@ -60,10 +60,6 @@ public model and SAE releases through the scripts.
 | Commit-open closes the probe-after-return side channel | `results/e11_svip_vs_ours.json`, `results/recipe3_svip_two_backbone.json` |
 | Serving overhead | `results/e9_overhead.json` |
 
-Additional manuscript figures are available in [`paper_figures/`](paper_figures/).
-
----
-
 ## CPU Reproduction
 
 The quickest reviewer path is CPU-only and reads the checked-in JSON logs:
@@ -114,7 +110,7 @@ datasets itself.
 ├── scripts/                     CPU and post-hoc analysis scripts
 ├── modal/                       GPU experiment entrypoints
 ├── results/                     committed JSON and text result logs
-└── paper_figures/               selected manuscript figures
+└── paper_figures/f1.png         overview figure used in this README
 ```
 
 Numbered scripts follow the order of the paper where possible. `eXX_*` scripts
